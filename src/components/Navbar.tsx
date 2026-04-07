@@ -1,27 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useScrollDirection } from '../hooks/useScrollDirection';
 import { cn } from '../lib/utils';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 export function Navbar() {
   const { scrollDirection, isAtTop } = useScrollDirection();
+  const [isHoveringTop, setIsHoveringTop] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Se o mouse estiver nos primeiros 120px da tela, considera hover no topo
+      if (e.clientY < 120) {
+        setIsHoveringTop(true);
+      } else {
+        setIsHoveringTop(false);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const isVisible = isAtTop || scrollDirection === 'up' || isHoveringTop;
+
+  useGSAP(() => {
+    gsap.to(navRef.current, {
+      yPercent: isVisible ? 0 : -100,
+      duration: 0.4,
+      ease: "power3.out",
+      overwrite: true
+    });
+  }, [isVisible]);
 
   return (
     <header
+      ref={navRef}
       className={cn(
-        // Classes base da Navbar
         "fixed top-0 left-0 w-full z-50",
-        "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm",
-        // Animação suave
-        "transition-transform duration-300 ease-in-out",
-        // Lógica de visibilidade:
-        // Se estiver rolando para baixo E não estiver no topo -> esconde (translada -100%)
-        // Caso contrário -> mostra (translada 0)
-        scrollDirection === 'down' && !isAtTop 
-          ? "-translate-y-full" 
-          : "translate-y-0"
+        "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1920px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center cursor-pointer">
@@ -32,7 +53,7 @@ export function Navbar() {
 
           {/* Links de Navegação (Desktop) */}
           <nav className="hidden md:flex space-x-8">
-            {['Home', 'Soluções', 'Metodologia', 'Cases'].map((item) => (
+            {['Home', 'Soluções', 'Metodologia', 'Casos'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}

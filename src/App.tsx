@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Settings, Eye, Calculator, BookOpen, 
@@ -10,6 +10,12 @@ import ProfessionalLayout from './niches/professional';
 import GastronomyLayout from './niches/gastronomy';
 import CommerceLayout from './niches/commerce';
 import { Navbar } from './components/Navbar';
+import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Niche = 'professional' | 'gastronomy' | 'commerce';
 type Mode = 'xray' | 'roi' | 'hero' | 'end-client';
@@ -97,6 +103,27 @@ export default function App() {
   const [mode, setMode] = useState<Mode>('hero');
   const [activeXray, setActiveXray] = useState<string | null>(null);
 
+  useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove(lenis.raf);
+    };
+  }, []);
+
   const currentNiche = niches[niche];
   const isEndClient = mode === 'end-client';
 
@@ -166,12 +193,28 @@ export default function App() {
   };
 
   const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
+    const cardRef = React.useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+      gsap.fromTo(cardRef.current,
+        { opacity: 0, y: 30 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.5, 
+          delay: index * 0.1, 
+          ease: "power3.out",
+          scrollTrigger: { 
+            trigger: cardRef.current, 
+            start: "top 85%" 
+          } 
+        }
+      );
+    }, { scope: cardRef });
+
     return (
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+      <div 
+        ref={cardRef}
         className="relative border border-brand-dark/20 p-[clamp(1.5rem,3vw,2rem)] flex flex-col h-full bg-white group overflow-hidden"
       >
         <p className="text-xs tracking-widest mb-8 font-medium">[ 0{index + 1} ]</p>
@@ -182,7 +225,7 @@ export default function App() {
           <div className="text-xs font-bold uppercase tracking-wider mb-2">Impacto UX</div>
           <div className="text-sm opacity-90 leading-relaxed">{feature.impact}</div>
         </div>
-      </motion.div>
+      </div>
     );
   };
 
