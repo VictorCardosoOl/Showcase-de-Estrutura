@@ -16,14 +16,14 @@ const niches = {
     name: 'Profissional',
     icon: Briefcase,
     hero: {
-      title: 'Excelência e autoridade no seu segmento.',
-      subtitle: 'Atendimento especializado e soluções sob medida para garantir os melhores resultados. Confie em quem entende do assunto.',
-      cta: 'Agendar Atendimento',
+      title: 'Posicionamento estratégico e autoridade no seu mercado.',
+      subtitle: 'Soluções sob medida que traduzem a sua expertise em resultados reais. Eleve o padrão da sua atuação profissional.',
+      cta: 'Iniciar Projeto',
     },
     features: [
-      { title: 'Atendimento Personalizado', desc: 'Análise detalhada do seu caso para oferecer a solução mais adequada.', impact: 'Aumenta a percepção de valor e confiança em 45%.' },
-      { title: 'Corpo Técnico Especializado', desc: 'Profissionais altamente qualificados e em constante atualização.', impact: 'Gera autoridade imediata, aumentando cliques no CTA em 30%.' },
-      { title: 'Foco em Resultados', desc: 'Estratégias otimizadas para garantir eficiência e segurança.', impact: 'Foco na resolução de problemas converte 3x mais visitantes.' },
+      { title: 'Estratégia Personalizada', desc: 'Mapeamento detalhado do seu cenário para desenvolver soluções alinhadas aos seus objetivos.', impact: 'Aumenta a percepção de valor e confiança em 45%.' },
+      { title: 'Expertise Comprovada', desc: 'Metodologias validadas e conhecimento técnico aplicado para gerar impacto direto no seu negócio.', impact: 'Gera autoridade imediata, aumentando cliques no CTA em 30%.' },
+      { title: 'Foco em Conversão', desc: 'Design e arquitetura de informação direcionados para transformar visitantes em clientes qualificados.', impact: 'Foco na resolução de problemas converte 3x mais visitantes.' },
     ],
     roi: {
       visitors: 1500,
@@ -166,7 +166,11 @@ export default function App() {
     const [isHovered, setIsHovered] = useState(false);
     
     return (
-      <div 
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
         className="relative border border-brand-dark/20 p-8 flex flex-col h-full bg-white group cursor-help"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -189,7 +193,7 @@ export default function App() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     );
   };
 
