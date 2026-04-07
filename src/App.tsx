@@ -156,8 +156,8 @@ export default function App() {
   const SectionWrapper = ({ children, id, htmlId, className }: { children: React.ReactNode, id: keyof typeof xrayData | 'none', htmlId?: string, className?: string }) => {
     return (
       <div id={htmlId} className={cn(
-        "relative transition-all duration-500",
-        mode === 'xray' && id !== 'none' ? "border-2 border-dashed border-brand-yellow/50 m-4 p-4" : "",
+        "relative transition-all duration-500 w-full",
+        mode === 'xray' && id !== 'none' ? "outline outline-2 outline-dashed outline-brand-yellow/50 outline-offset-[-2px] bg-brand-yellow/5" : "",
         className
       )}>
         {children}
@@ -166,36 +166,22 @@ export default function App() {
   };
 
   const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
-    const [isHovered, setIsHovered] = useState(false);
-    
     return (
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="relative border border-brand-dark/20 p-8 flex flex-col h-full bg-white group cursor-help"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        className="relative border border-brand-dark/20 p-[clamp(1.5rem,3vw,2rem)] flex flex-col h-full bg-white group overflow-hidden"
       >
         <p className="text-xs tracking-widest mb-8 font-medium">[ 0{index + 1} ]</p>
-        <h3 className="text-2xl font-medium mb-4">{feature.title}</h3>
-        <p className="text-brand-dark/70 mt-auto leading-relaxed">{feature.desc}</p>
+        <h3 className="text-[clamp(1.25rem,2vw,1.5rem)] font-medium mb-4">{feature.title}</h3>
+        <p className="text-brand-dark/70 mt-auto leading-relaxed mb-8">{feature.desc}</p>
         
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 bg-brand-dark text-brand-yellow p-4 rounded-lg shadow-xl z-20 pointer-events-none"
-            >
-              <div className="text-xs font-bold uppercase tracking-wider mb-1">Impacto UX</div>
-              <div className="text-sm opacity-90">{feature.impact}</div>
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[8px] border-l-transparent border-r-transparent border-t-brand-dark"></div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="absolute bottom-0 left-0 w-full p-[clamp(1.5rem,3vw,2rem)] bg-brand-dark text-brand-yellow transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex flex-col justify-center h-full sm:h-auto sm:min-h-[40%]">
+          <div className="text-xs font-bold uppercase tracking-wider mb-2">Impacto UX</div>
+          <div className="text-sm opacity-90 leading-relaxed">{feature.impact}</div>
+        </div>
       </motion.div>
     );
   };
