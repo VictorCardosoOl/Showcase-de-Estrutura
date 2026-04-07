@@ -3,50 +3,31 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Settings, Eye, Calculator, BookOpen, 
   ArrowRight, Info, CheckCircle, TrendingUp,
-  Shield, Heart, Utensils, Store, X, ArrowUpRight
+  Shield, Heart, Utensils, Store, X, ArrowUpRight, Briefcase
 } from 'lucide-react';
 import { cn } from './lib/utils';
 
-type Niche = 'law' | 'medicine' | 'gastronomy' | 'local';
+type Niche = 'professional' | 'gastronomy' | 'commerce';
 type Mode = 'xray' | 'roi' | 'hero' | 'end-client';
 
 const niches = {
-  law: {
-    name: 'Advocacia',
-    icon: Shield,
+  professional: {
+    name: 'Profissional',
+    icon: Briefcase,
     hero: {
-      title: 'Defenda seus direitos com quem entende.',
-      subtitle: 'Especialistas em direito empresarial e civil, focados em resultados rápidos e seguros. Protegemos o seu patrimônio com excelência.',
-      cta: 'Agende uma Consulta',
+      title: 'Excelência e autoridade no seu segmento.',
+      subtitle: 'Atendimento especializado e soluções sob medida para garantir os melhores resultados. Confie em quem entende do assunto.',
+      cta: 'Agendar Atendimento',
     },
     features: [
-      { title: 'Análise de Contratos', desc: 'Revisão minuciosa para evitar passivos e garantir segurança jurídica.', impact: 'Aumenta a percepção de segurança em 45%, reduzindo o abandono da página.' },
-      { title: 'Defesa Trabalhista', desc: 'Proteção completa para sua empresa contra processos indevidos.', impact: 'Gera autoridade imediata, aumentando cliques no CTA em 20%.' },
-      { title: 'Consultoria Tributária', desc: 'Otimização de impostos dentro da lei para maximizar seus lucros.', impact: 'Foco em dor financeira converte 3x mais visitantes analíticos.' },
+      { title: 'Atendimento Personalizado', desc: 'Análise detalhada do seu caso para oferecer a solução mais adequada.', impact: 'Aumenta a percepção de valor e confiança em 45%.' },
+      { title: 'Corpo Técnico Especializado', desc: 'Profissionais altamente qualificados e em constante atualização.', impact: 'Gera autoridade imediata, aumentando cliques no CTA em 30%.' },
+      { title: 'Foco em Resultados', desc: 'Estratégias otimizadas para garantir eficiência e segurança.', impact: 'Foco na resolução de problemas converte 3x mais visitantes.' },
     ],
     roi: {
-      visitors: 1000,
-      conversionRate: 0.03,
-      ticket: 5000,
-    }
-  },
-  medicine: {
-    name: 'Medicina',
-    icon: Heart,
-    hero: {
-      title: 'Sua saúde em mãos especialistas.',
-      subtitle: 'Atendimento humanizado e tecnologia de ponta para o seu bem-estar. Agende sua consulta sem sair de casa.',
-      cta: 'Marcar Exame',
-    },
-    features: [
-      { title: 'Corpo Clínico Renomado', desc: 'Especialistas com anos de experiência e formação nas melhores instituições.', impact: 'Prova social forte: +35% de agendamentos diretos.' },
-      { title: 'Equipamentos Modernos', desc: 'Diagnósticos precisos e rápidos com tecnologia de última geração.', impact: 'Reduz objeções sobre qualidade, aumentando o tempo na página.' },
-      { title: 'Atendimento 24h', desc: 'Sempre prontos para cuidar de você, a qualquer hora do dia ou da noite.', impact: 'Gatilho de urgência/disponibilidade: +50% de conversão mobile.' },
-    ],
-    roi: {
-      visitors: 2000,
-      conversionRate: 0.08,
-      ticket: 350,
+      visitors: 1500,
+      conversionRate: 0.05,
+      ticket: 2500,
     }
   },
   gastronomy: {
@@ -54,37 +35,37 @@ const niches = {
     icon: Utensils,
     hero: {
       title: 'Uma experiência inesquecível para o seu paladar.',
-      subtitle: 'Ingredientes frescos, receitas exclusivas e um ambiente acolhedor. Descubra o verdadeiro sabor da alta gastronomia.',
-      cta: 'Fazer Reserva',
+      subtitle: 'Ingredientes selecionados, receitas exclusivas e um ambiente acolhedor. Descubra o verdadeiro sabor da nossa cozinha.',
+      cta: 'Ver Cardápio / Reservar',
     },
     features: [
-      { title: 'Menu Degustação', desc: 'Uma jornada de sabores únicos criada pelo nosso chef premiado.', impact: 'Imagens de alta qualidade aqui aumentam reservas em 40%.' },
-      { title: 'Carta de Vinhos', desc: 'Rótulos selecionados por sommeliers para harmonizar perfeitamente.', impact: 'Aumenta o ticket médio percebido antes mesmo da visita.' },
-      { title: 'Eventos Privados', desc: 'Espaço exclusivo e atendimento personalizado para suas celebrações.', impact: 'Formulários dedicados para eventos convertem leads B2B de alto valor.' },
+      { title: 'Menu Exclusivo', desc: 'Uma jornada de sabores únicos criada com paixão e técnica.', impact: 'Imagens de alta qualidade aqui aumentam reservas em 40%.' },
+      { title: 'Ambiente e Experiência', desc: 'Espaço pensado para proporcionar momentos memoráveis.', impact: 'Aumenta o ticket médio percebido antes mesmo da visita.' },
+      { title: 'Eventos e Encomendas', desc: 'Atendimento personalizado para suas celebrações e necessidades.', impact: 'Formulários dedicados convertem leads de alto valor.' },
     ],
     roi: {
       visitors: 5000,
       conversionRate: 0.15,
-      ticket: 180,
+      ticket: 150,
     }
   },
-  local: {
-    name: 'Comércio Local',
+  commerce: {
+    name: 'Comércio',
     icon: Store,
     hero: {
-      title: 'Os melhores produtos, pertinho de você.',
-      subtitle: 'Qualidade, variedade e o atendimento que você já conhece e confia. Compre online e retire na loja.',
+      title: 'Os melhores produtos, com a qualidade que você confia.',
+      subtitle: 'Variedade, curadoria especial e o atendimento que você merece. Compre com facilidade e segurança.',
       cta: 'Ver Ofertas',
     },
     features: [
-      { title: 'Entrega Rápida', desc: 'Receba suas compras em casa no mesmo dia, com total comodidade.', impact: 'O maior motivador de compra local: reduz abandono de carrinho em 60%.' },
-      { title: 'Produtos Frescos', desc: 'Reposição diária de hortifruti e produtos perecíveis de alta qualidade.', impact: 'Gera recorrência. Clientes que confiam compram 4x mais.' },
-      { title: 'Clube de Vantagens', desc: 'Descontos exclusivos e ofertas personalizadas para clientes fiéis.', impact: 'Aumenta o LTV (Life Time Value) e a retenção em 25%.' },
+      { title: 'Logística Eficiente', desc: 'Receba suas compras com rapidez e total comodidade.', impact: 'O maior motivador de compra: reduz abandono de carrinho em 60%.' },
+      { title: 'Curadoria de Qualidade', desc: 'Produtos selecionados rigorosamente para garantir sua satisfação.', impact: 'Gera recorrência. Clientes que confiam compram 4x mais.' },
+      { title: 'Benefícios Exclusivos', desc: 'Vantagens e ofertas personalizadas para clientes fiéis.', impact: 'Aumenta o LTV (Life Time Value) e a retenção em 25%.' },
     ],
     roi: {
       visitors: 10000,
       conversionRate: 0.05,
-      ticket: 85,
+      ticket: 100,
     }
   }
 };
@@ -108,7 +89,7 @@ const xrayData = {
 };
 
 export default function App() {
-  const [niche, setNiche] = useState<Niche>('law');
+  const [niche, setNiche] = useState<Niche>('professional');
   const [mode, setMode] = useState<Mode>('hero');
   const [activeXray, setActiveXray] = useState<string | null>(null);
 
