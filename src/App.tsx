@@ -10,6 +10,7 @@ import ProfessionalLayout from './niches/professional';
 import GastronomyLayout from './niches/gastronomy';
 import CommerceLayout from './niches/commerce';
 import { Navbar } from './components/Navbar';
+import { useScrollDirection } from './hooks/useScrollDirection';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -103,6 +104,36 @@ export default function App() {
   const [mode, setMode] = useState<Mode>('hero');
   const [activeXray, setActiveXray] = useState<string | null>(null);
 
+  const { scrollDirection, isAtTop } = useScrollDirection();
+  const [isHoveringTop, setIsHoveringTop] = useState(false);
+  const controlsRef = React.useRef<HTMLDivElement>(null);
+  const isEndClient = mode === 'end-client';
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (e.clientY < 120) {
+        setIsHoveringTop(true);
+      } else {
+        setIsHoveringTop(false);
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const isControlsVisible = isAtTop || scrollDirection === 'up' || isHoveringTop;
+
+  useGSAP(() => {
+    if (controlsRef.current) {
+      gsap.to(controlsRef.current, {
+        yPercent: isControlsVisible ? 0 : -100,
+        duration: 0.4,
+        ease: "power3.out",
+        overwrite: true
+      });
+    }
+  }, [isControlsVisible, isEndClient]);
+
   useEffect(() => {
     const lenis = new Lenis({
       autoRaf: true,
@@ -125,7 +156,6 @@ export default function App() {
   }, []);
 
   const currentNiche = niches[niche];
-  const isEndClient = mode === 'end-client';
 
   // ROI Calculations
   const monthlyRevenue = currentNiche.roi.visitors * currentNiche.roi.conversionRate * currentNiche.roi.ticket;
@@ -244,9 +274,10 @@ export default function App() {
       <AnimatePresence>
         {!isEndClient && (
           <motion.div 
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
+            ref={controlsRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             className="fixed top-0 left-0 right-0 z-50 bg-brand-light/90 backdrop-blur-md border-b border-brand-dark/10 shadow-sm"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
