@@ -6,7 +6,9 @@ import {
   Shield, Heart, Utensils, Store, X, ArrowUpRight, Briefcase
 } from 'lucide-react';
 import { cn } from './lib/utils';
-import { ProfessionalLayout, GastronomyLayout, CommerceLayout } from './layouts';
+import ProfessionalLayout from './niches/professional';
+import GastronomyLayout from './niches/gastronomy';
+import CommerceLayout from './niches/commerce';
 
 type Niche = 'professional' | 'gastronomy' | 'commerce';
 type Mode = 'xray' | 'roi' | 'hero' | 'end-client';
@@ -198,7 +200,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-brand-light text-brand-dark selection:bg-brand-yellow selection:text-brand-dark">
+    <div className={cn(
+      "min-h-screen font-sans bg-brand-light text-brand-dark selection:bg-brand-yellow selection:text-brand-dark",
+      niche === 'gastronomy' ? 'gastronomy-theme' : niche === 'commerce' ? 'commerce-theme' : 'professional-theme'
+    )}>
       
       {/* Consultant Controls (Hidden in End-Client Mode) */}
       <AnimatePresence>

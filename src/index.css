@@ -1,11 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #2d2d22;
-  --color-brand-olive: #6b6b54;
-  --color-brand-yellow: #e8e297;
-  --color-brand-light: #f4f4f0;
+  --color-brand-dark: var(--theme-dark);
+  --color-brand-olive: var(--theme-olive);
+  --color-brand-yellow: var(--theme-yellow);
+  --color-brand-light: var(--theme-light);
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  /* Default / Professional Theme */
+  --theme-dark: #2d2d22;
+  --theme-olive: #6b6b54;
+  --theme-yellow: #e8e297;
+  --theme-light: #f4f4f0;
+}
+
+.gastronomy-theme {
+  --theme-dark: #3a1c1c;
+  --theme-olive: #8b4513;
+  --theme-yellow: #f4a460;
+  --theme-light: #fff8dc;
+}
+
+.commerce-theme {
+  --theme-dark: #1a2b3c;
+  --theme-olive: #4a6b8c;
+  --theme-yellow: #87ceeb;
+  --theme-light: #f0f8ff;
 }
 
 html {
