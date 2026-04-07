@@ -9,19 +9,7 @@ export const HeroSection = ({ nicheId, currentNiche, SectionWrapper, XrayMarker 
     <div className="absolute inset-0 opacity-40">
       <img src={`https://picsum.photos/seed/${nicheId}hero/1920/1080`} className="w-full h-full object-cover" alt="Hero" />
     </div>
-    <div className="relative z-10 flex justify-between items-center p-6 md:p-12">
-      <div className="font-bold text-xl leading-none">
-        The<br/>portfolio<br/>club
-      </div>
-      <div className="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-medium">
-        <a href="#planos" className="hover:opacity-70 transition-opacity">Planos</a>
-        <a href="#sobre-nos" className="hover:opacity-70 transition-opacity">Sobre Nós</a>
-        <a href="#hero" className="bg-brand-yellow text-brand-dark px-6 py-2 rounded-full flex items-center gap-2 hover:bg-white transition-colors">
-          Junte-se <ArrowRight size={14} />
-        </a>
-      </div>
-    </div>
-    <div className="relative z-10 flex-grow flex flex-col justify-center max-w-7xl mx-auto px-6 md:px-12 w-full">
+    <div className="relative z-10 flex-grow flex flex-col justify-center max-w-7xl mx-auto px-6 md:px-12 w-full pt-20">
       <div className="max-w-2xl mb-32">
         <p className="text-xl md:text-2xl mb-8 leading-snug font-medium">
           {currentNiche.hero.subtitle}

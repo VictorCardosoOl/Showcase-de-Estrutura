@@ -9,6 +9,7 @@ import { cn } from './lib/utils';
 import ProfessionalLayout from './niches/professional';
 import GastronomyLayout from './niches/gastronomy';
 import CommerceLayout from './niches/commerce';
+import { Navbar } from './components/Navbar';
 
 type Niche = 'professional' | 'gastronomy' | 'commerce';
 type Mode = 'xray' | 'roi' | 'hero' | 'end-client';
@@ -205,6 +206,11 @@ export default function App() {
       niche === 'gastronomy' ? 'gastronomy-theme' : niche === 'commerce' ? 'commerce-theme' : 'professional-theme'
     )}>
       
+      {/* Smart Navbar (Visible only in End-Client Mode) */}
+      <AnimatePresence>
+        {isEndClient && <Navbar />}
+      </AnimatePresence>
+
       {/* Consultant Controls (Hidden in End-Client Mode) */}
       <AnimatePresence>
         {!isEndClient && (
