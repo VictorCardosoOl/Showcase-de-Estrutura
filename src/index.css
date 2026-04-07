@@ -32,6 +32,13 @@
   --theme-light: #f0f8ff;
 }
 
+.empresarial-theme {
+  --theme-dark: #0f172a;
+  --theme-olive: #334155;
+  --theme-yellow: #3b82f6;
+  --theme-light: #f8fafc;
+}
+
 html {
   scroll-behavior: smooth;
 }

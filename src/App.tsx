@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Settings, Eye, Calculator, BookOpen, 
   ArrowRight, Info, CheckCircle, TrendingUp,
-  Shield, Heart, Utensils, Store, X, ArrowUpRight, Briefcase
+  Shield, Heart, Utensils, Store, X, ArrowUpRight, Briefcase, Building2
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import ProfessionalLayout from './niches/professional';
 import GastronomyLayout from './niches/gastronomy';
 import CommerceLayout from './niches/commerce';
+import EmpresarialLayout from './niches/empresarial';
 import { Navbar } from './components/Navbar';
 import { useScrollDirection } from './hooks/useScrollDirection';
 import Lenis from 'lenis';
@@ -18,7 +19,7 @@ import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-type Niche = 'professional' | 'gastronomy' | 'commerce';
+type Niche = 'professional' | 'gastronomy' | 'commerce' | 'empresarial';
 type Mode = 'xray' | 'roi' | 'hero' | 'end-client';
 
 const niches = {
@@ -77,6 +78,25 @@ const niches = {
       visitors: 10000,
       conversionRate: 0.05,
       ticket: 100,
+    }
+  },
+  empresarial: {
+    name: 'Empresarial',
+    icon: Building2,
+    hero: {
+      title: 'Transformação digital e escala para o seu negócio.',
+      subtitle: 'Soluções corporativas robustas para otimizar processos, engajar colaboradores e impulsionar resultados em larga escala.',
+      cta: 'Falar com Especialista',
+    },
+    features: [
+      { title: 'Automação de Processos', desc: 'Reduza custos operacionais com fluxos de trabalho inteligentes e integrados.', impact: 'Aumenta a eficiência da equipe em até 40%.' },
+      { title: 'Segurança e Conformidade', desc: 'Infraestrutura de ponta para proteger os dados da sua empresa e clientes.', impact: 'Reduz riscos de vazamento e garante conformidade com LGPD.' },
+      { title: 'Escalabilidade Garantida', desc: 'Sistemas preparados para crescer junto com a sua empresa sem gargalos.', impact: 'Suporta picos de acesso sem perda de performance.' },
+    ],
+    roi: {
+      visitors: 20000,
+      conversionRate: 0.02,
+      ticket: 15000,
     }
   }
 };
@@ -262,7 +282,7 @@ export default function App() {
   return (
     <div className={cn(
       "min-h-screen font-sans bg-brand-light text-brand-dark selection:bg-brand-yellow selection:text-brand-dark",
-      niche === 'gastronomy' ? 'gastronomy-theme' : niche === 'commerce' ? 'commerce-theme' : 'professional-theme'
+      niche === 'gastronomy' ? 'gastronomy-theme' : niche === 'commerce' ? 'commerce-theme' : niche === 'empresarial' ? 'empresarial-theme' : 'professional-theme'
     )}>
       
       {/* Smart Navbar (Visible only in End-Client Mode) */}
@@ -387,6 +407,13 @@ export default function App() {
         )}
         {niche === 'commerce' && (
           <CommerceLayout 
+            nicheId={niche} currentNiche={currentNiche} mode={mode} 
+            monthlyRevenue={monthlyRevenue} optimizedRevenue={optimizedRevenue} 
+            XrayMarker={XrayMarker} SectionWrapper={SectionWrapper} FeatureCard={FeatureCard} 
+          />
+        )}
+        {niche === 'empresarial' && (
+          <EmpresarialLayout 
             nicheId={niche} currentNiche={currentNiche} mode={mode} 
             monthlyRevenue={monthlyRevenue} optimizedRevenue={optimizedRevenue} 
             XrayMarker={XrayMarker} SectionWrapper={SectionWrapper} FeatureCard={FeatureCard} 
