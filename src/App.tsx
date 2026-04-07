@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { 
   Settings, Eye, Calculator, BookOpen, 
   ArrowRight, Info, CheckCircle, TrendingUp,
-  Shield, Heart, Utensils, Store, X
+  Shield, Heart, Utensils, Store, X, ArrowUpRight
 } from 'lucide-react';
 import { cn } from './lib/utils';
 
@@ -14,23 +14,15 @@ const niches = {
   law: {
     name: 'Advocacia',
     icon: Shield,
-    colors: {
-      primary: 'bg-slate-900',
-      text: 'text-slate-900',
-      accent: 'bg-amber-600',
-      accentText: 'text-amber-600',
-      bg: 'bg-slate-50',
-      border: 'border-slate-200'
-    },
     hero: {
       title: 'Defenda seus direitos com quem entende.',
       subtitle: 'Especialistas em direito empresarial e civil, focados em resultados rápidos e seguros. Protegemos o seu patrimônio com excelência.',
       cta: 'Agende uma Consulta',
     },
     features: [
-      { title: 'Análise de Contratos', desc: 'Revisão minuciosa para evitar passivos.' },
-      { title: 'Defesa Trabalhista', desc: 'Proteção completa para sua empresa.' },
-      { title: 'Consultoria Tributária', desc: 'Otimização de impostos dentro da lei.' },
+      { title: 'Análise de Contratos', desc: 'Revisão minuciosa para evitar passivos e garantir segurança jurídica.' },
+      { title: 'Defesa Trabalhista', desc: 'Proteção completa para sua empresa contra processos indevidos.' },
+      { title: 'Consultoria Tributária', desc: 'Otimização de impostos dentro da lei para maximizar seus lucros.' },
     ],
     roi: {
       visitors: 1000,
@@ -41,23 +33,15 @@ const niches = {
   medicine: {
     name: 'Medicina',
     icon: Heart,
-    colors: {
-      primary: 'bg-teal-700',
-      text: 'text-teal-900',
-      accent: 'bg-emerald-500',
-      accentText: 'text-emerald-600',
-      bg: 'bg-teal-50',
-      border: 'border-teal-200'
-    },
     hero: {
       title: 'Sua saúde em mãos especialistas.',
       subtitle: 'Atendimento humanizado e tecnologia de ponta para o seu bem-estar. Agende sua consulta sem sair de casa.',
       cta: 'Marcar Exame',
     },
     features: [
-      { title: 'Corpo Clínico Renomado', desc: 'Especialistas com anos de experiência.' },
-      { title: 'Equipamentos Modernos', desc: 'Diagnósticos precisos e rápidos.' },
-      { title: 'Atendimento 24h', desc: 'Sempre prontos para cuidar de você.' },
+      { title: 'Corpo Clínico Renomado', desc: 'Especialistas com anos de experiência e formação nas melhores instituições.' },
+      { title: 'Equipamentos Modernos', desc: 'Diagnósticos precisos e rápidos com tecnologia de última geração.' },
+      { title: 'Atendimento 24h', desc: 'Sempre prontos para cuidar de você, a qualquer hora do dia ou da noite.' },
     ],
     roi: {
       visitors: 2000,
@@ -68,23 +52,15 @@ const niches = {
   gastronomy: {
     name: 'Gastronomia',
     icon: Utensils,
-    colors: {
-      primary: 'bg-orange-700',
-      text: 'text-orange-950',
-      accent: 'bg-red-600',
-      accentText: 'text-red-600',
-      bg: 'bg-orange-50',
-      border: 'border-orange-200'
-    },
     hero: {
       title: 'Uma experiência inesquecível para o seu paladar.',
       subtitle: 'Ingredientes frescos, receitas exclusivas e um ambiente acolhedor. Descubra o verdadeiro sabor da alta gastronomia.',
       cta: 'Fazer Reserva',
     },
     features: [
-      { title: 'Menu Degustação', desc: 'Uma jornada de sabores únicos.' },
-      { title: 'Carta de Vinhos', desc: 'Rótulos selecionados por sommeliers.' },
-      { title: 'Eventos Privados', desc: 'Espaço exclusivo para celebrações.' },
+      { title: 'Menu Degustação', desc: 'Uma jornada de sabores únicos criada pelo nosso chef premiado.' },
+      { title: 'Carta de Vinhos', desc: 'Rótulos selecionados por sommeliers para harmonizar perfeitamente.' },
+      { title: 'Eventos Privados', desc: 'Espaço exclusivo e atendimento personalizado para suas celebrações.' },
     ],
     roi: {
       visitors: 5000,
@@ -95,23 +71,15 @@ const niches = {
   local: {
     name: 'Comércio Local',
     icon: Store,
-    colors: {
-      primary: 'bg-indigo-700',
-      text: 'text-indigo-950',
-      accent: 'bg-pink-600',
-      accentText: 'text-pink-600',
-      bg: 'bg-indigo-50',
-      border: 'border-indigo-200'
-    },
     hero: {
       title: 'Os melhores produtos, pertinho de você.',
       subtitle: 'Qualidade, variedade e o atendimento que você já conhece e confia. Compre online e retire na loja.',
       cta: 'Ver Ofertas',
     },
     features: [
-      { title: 'Entrega Rápida', desc: 'Receba suas compras em casa.' },
-      { title: 'Produtos Frescos', desc: 'Reposição diária de hortifruti.' },
-      { title: 'Clube de Vantagens', desc: 'Descontos exclusivos para clientes.' },
+      { title: 'Entrega Rápida', desc: 'Receba suas compras em casa no mesmo dia, com total comodidade.' },
+      { title: 'Produtos Frescos', desc: 'Reposição diária de hortifruti e produtos perecíveis de alta qualidade.' },
+      { title: 'Clube de Vantagens', desc: 'Descontos exclusivos e ofertas personalizadas para clientes fiéis.' },
     ],
     roi: {
       visitors: 10000,
@@ -167,7 +135,7 @@ export default function App() {
             }}
             className={cn(
               "flex items-center justify-center w-10 h-10 rounded-full shadow-lg transition-all duration-300",
-              isActive ? "bg-blue-600 text-white scale-110" : "bg-white text-blue-600 hover:bg-blue-50 animate-pulse"
+              isActive ? "bg-brand-yellow text-brand-dark scale-110" : "bg-white text-brand-dark hover:bg-brand-yellow/20 animate-pulse"
             )}
           >
             <Info size={24} />
@@ -179,16 +147,16 @@ export default function App() {
                 initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="absolute top-12 left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-100 p-5 text-left"
+                className="absolute top-12 left-0 w-80 bg-brand-dark text-brand-yellow rounded-xl shadow-2xl border border-brand-yellow/20 p-5 text-left"
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-bold text-slate-900">{data.title}</h4>
-                  <button onClick={() => setActiveXray(null)} className="text-slate-400 hover:text-slate-600">
+                  <h4 className="font-bold">{data.title}</h4>
+                  <button onClick={() => setActiveXray(null)} className="text-brand-yellow/60 hover:text-brand-yellow">
                     <X size={16} />
                   </button>
                 </div>
-                <p className="text-sm text-slate-600 mb-4 leading-relaxed">{data.desc}</p>
-                <div className="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-2 rounded-lg flex items-center gap-2">
+                <p className="text-sm opacity-80 mb-4 leading-relaxed">{data.desc}</p>
+                <div className="bg-brand-yellow text-brand-dark text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-2">
                   <TrendingUp size={14} />
                   Impacto: {data.conversionImpact}
                 </div>
@@ -204,7 +172,7 @@ export default function App() {
     return (
       <div className={cn(
         "relative transition-all duration-500",
-        mode === 'xray' ? "border-2 border-dashed border-blue-300 rounded-2xl m-4 p-4 bg-blue-50/30" : "",
+        mode === 'xray' ? "border-2 border-dashed border-brand-yellow/50 m-4 p-4" : "",
         className
       )}>
         {children}
@@ -213,7 +181,7 @@ export default function App() {
   };
 
   return (
-    <div className={cn("min-h-screen font-sans transition-colors duration-500", currentNiche.colors.bg)}>
+    <div className="min-h-screen font-sans bg-brand-light text-brand-dark selection:bg-brand-yellow selection:text-brand-dark">
       
       {/* Consultant Controls (Hidden in End-Client Mode) */}
       <AnimatePresence>
@@ -222,13 +190,13 @@ export default function App() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             exit={{ y: -100 }}
-            className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm"
+            className="fixed top-0 left-0 right-0 z-50 bg-brand-light/90 backdrop-blur-md border-b border-brand-dark/10 shadow-sm"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col md:flex-row justify-between items-center py-4 gap-4">
                 
                 {/* Niche Selector */}
-                <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-lg overflow-x-auto w-full md:w-auto">
+                <div className="flex items-center gap-2 bg-white p-1 rounded-full overflow-x-auto w-full md:w-auto border border-brand-dark/10">
                   {(Object.entries(niches) as [Niche, typeof niches[Niche]][]).map(([key, value]) => {
                     const Icon = value.icon;
                     return (
@@ -236,10 +204,10 @@ export default function App() {
                         key={key}
                         onClick={() => setNiche(key)}
                         className={cn(
-                          "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all whitespace-nowrap",
+                          "flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap",
                           niche === key 
-                            ? "bg-white text-slate-900 shadow-sm" 
-                            : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
+                            ? "bg-brand-dark text-brand-yellow" 
+                            : "text-brand-dark/60 hover:text-brand-dark hover:bg-brand-dark/5"
                         )}
                       >
                         <Icon size={16} />
@@ -250,12 +218,12 @@ export default function App() {
                 </div>
 
                 {/* Mode Selector */}
-                <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-lg w-full md:w-auto">
+                <div className="flex items-center gap-2 bg-white p-1 rounded-full w-full md:w-auto border border-brand-dark/10">
                   <button
                     onClick={() => setMode('hero')}
                     className={cn(
-                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                      mode === 'hero' ? "bg-white text-indigo-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all",
+                      mode === 'hero' ? "bg-brand-dark text-brand-yellow" : "text-brand-dark/60 hover:text-brand-dark"
                     )}
                   >
                     <BookOpen size={16} />
@@ -264,8 +232,8 @@ export default function App() {
                   <button
                     onClick={() => setMode('xray')}
                     className={cn(
-                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                      mode === 'xray' ? "bg-white text-blue-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all",
+                      mode === 'xray' ? "bg-brand-dark text-brand-yellow" : "text-brand-dark/60 hover:text-brand-dark"
                     )}
                   >
                     <Settings size={16} />
@@ -274,17 +242,17 @@ export default function App() {
                   <button
                     onClick={() => setMode('roi')}
                     className={cn(
-                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
-                      mode === 'roi' ? "bg-white text-emerald-600 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all",
+                      mode === 'roi' ? "bg-brand-dark text-brand-yellow" : "text-brand-dark/60 hover:text-brand-dark"
                     )}
                   >
                     <Calculator size={16} />
                     <span className="hidden sm:inline">ROI</span>
                   </button>
-                  <div className="w-px h-6 bg-slate-300 mx-1 hidden md:block"></div>
+                  <div className="w-px h-6 bg-brand-dark/10 mx-1 hidden md:block"></div>
                   <button
                     onClick={() => setMode('end-client')}
-                    className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-md text-sm font-medium bg-slate-900 text-white hover:bg-slate-800 transition-all"
+                    className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-brand-yellow text-brand-dark hover:bg-[#d8d287] transition-all"
                   >
                     <Eye size={16} />
                     <span className="hidden sm:inline">Visão Cliente</span>
@@ -305,7 +273,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={() => setMode('hero')}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl hover:bg-slate-800 transition-all hover:scale-105"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-brand-dark text-brand-yellow px-6 py-3 rounded-full shadow-2xl hover:bg-[#1a1a14] transition-all hover:scale-105"
           >
             <Settings size={18} />
             Sair da Visão do Cliente
@@ -314,7 +282,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Main Content Area */}
-      <main className={cn("transition-all duration-500", !isEndClient ? "pt-32" : "")}>
+      <main className={cn("transition-all duration-500", !isEndClient ? "pt-24" : "")}>
         
         {/* ROI Simulator Overlay */}
         <AnimatePresence>
@@ -323,43 +291,43 @@ export default function App() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="fixed top-32 right-6 z-40 w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden"
+              className="fixed top-32 right-6 z-40 w-80 bg-brand-dark text-brand-yellow rounded-2xl shadow-2xl border border-brand-yellow/20 overflow-hidden"
             >
-              <div className="bg-emerald-600 text-white p-4">
+              <div className="bg-brand-olive p-4">
                 <h3 className="font-bold flex items-center gap-2">
                   <Calculator size={18} />
                   Simulador de Conversão
                 </h3>
-                <p className="text-emerald-100 text-xs mt-1">Impacto financeiro do design estratégico</p>
+                <p className="text-brand-yellow/80 text-xs mt-1">Impacto financeiro do design estratégico</p>
               </div>
               <div className="p-5 space-y-4">
                 <div>
-                  <div className="flex justify-between text-sm text-slate-600 mb-1">
-                    <span>Tráfego Mensal</span>
-                    <span className="font-semibold text-slate-900">{currentNiche.roi.visitors.toLocaleString()}</span>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span className="opacity-80">Tráfego Mensal</span>
+                    <span className="font-semibold">{currentNiche.roi.visitors.toLocaleString()}</span>
                   </div>
-                  <div className="w-full bg-slate-100 rounded-full h-2">
-                    <div className="bg-slate-300 h-2 rounded-full w-3/4"></div>
+                  <div className="w-full bg-brand-yellow/20 rounded-full h-2">
+                    <div className="bg-brand-yellow h-2 rounded-full w-3/4"></div>
                   </div>
                 </div>
                 <div>
-                  <div className="flex justify-between text-sm text-slate-600 mb-1">
-                    <span>Ticket Médio</span>
-                    <span className="font-semibold text-slate-900">R$ {currentNiche.roi.ticket.toLocaleString()}</span>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span className="opacity-80">Ticket Médio</span>
+                    <span className="font-semibold">R$ {currentNiche.roi.ticket.toLocaleString()}</span>
                   </div>
                 </div>
-                <div className="pt-4 border-t border-slate-100">
+                <div className="pt-4 border-t border-brand-yellow/20">
                   <div className="flex justify-between items-end mb-2">
-                    <span className="text-sm text-slate-500">Cenário Atual ({(currentNiche.roi.conversionRate * 100).toFixed(1)}%)</span>
-                    <span className="font-bold text-slate-700">R$ {monthlyRevenue.toLocaleString()}</span>
+                    <span className="text-sm opacity-80">Cenário Atual ({(currentNiche.roi.conversionRate * 100).toFixed(1)}%)</span>
+                    <span className="font-bold">R$ {monthlyRevenue.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between items-end">
-                    <span className="text-sm font-medium text-emerald-600">Com UX Otimizado ({(currentNiche.roi.conversionRate * 1.5 * 100).toFixed(1)}%)</span>
-                    <span className="font-bold text-xl text-emerald-600">R$ {optimizedRevenue.toLocaleString()}</span>
+                    <span className="text-sm font-medium">Com UX Otimizado ({(currentNiche.roi.conversionRate * 1.5 * 100).toFixed(1)}%)</span>
+                    <span className="font-bold text-xl">R$ {optimizedRevenue.toLocaleString()}</span>
                   </div>
                 </div>
-                <div className="bg-emerald-50 p-3 rounded-lg mt-4">
-                  <p className="text-sm text-emerald-800 font-medium text-center">
+                <div className="bg-brand-yellow text-brand-dark p-3 rounded-lg mt-4">
+                  <p className="text-sm font-medium text-center">
                     Potencial de <span className="font-bold">+ R$ {(optimizedRevenue - monthlyRevenue).toLocaleString()}</span> /mês
                   </p>
                 </div>
@@ -368,128 +336,168 @@ export default function App() {
           )}
         </AnimatePresence>
 
-        {/* Hero Section */}
-        <SectionWrapper id="hero" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <XrayMarker id="hero" position="-top-4 -left-4" />
-          
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              key={`${niche}-hero-text`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="max-w-2xl"
-            >
-              <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-6", currentNiche.colors.accent, "text-white")}>
-                <currentNiche.icon size={16} />
-                Especialista em {currentNiche.name}
-              </div>
-              <h1 className={cn("text-5xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight", currentNiche.colors.text)}>
-                {currentNiche.hero.title}
-              </h1>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                {currentNiche.hero.subtitle}
-              </p>
-              
-              <SectionWrapper id="cta" className="-m-4 p-4">
-                <XrayMarker id="cta" position="-top-2 -right-2" />
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button className={cn(
-                    "px-8 py-4 rounded-xl font-bold text-lg text-white shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-2",
-                    currentNiche.colors.primary
-                  )}>
-                    {currentNiche.hero.cta}
-                    <ArrowRight size={20} />
-                  </button>
-                  {mode === 'hero' && (
-                    <div className="flex items-center gap-2 text-sm text-slate-500 px-4">
-                      <CheckCircle size={16} className={currentNiche.colors.accentText} />
-                      Sem compromisso
-                    </div>
-                  )}
-                </div>
-              </SectionWrapper>
-            </motion.div>
+        {/* HERO SECTION */}
+        <SectionWrapper id="hero" className="relative bg-brand-dark text-brand-yellow overflow-hidden min-h-[90vh] flex flex-col">
+           <XrayMarker id="hero" position="top-32 left-8" />
+           
+           {/* Background Image with Overlay */}
+           <div className="absolute inset-0 opacity-40">
+             <img src={`https://picsum.photos/seed/${niche}hero/1920/1080`} className="w-full h-full object-cover" alt="Hero" />
+           </div>
+           
+           {/* Top Nav (Mock) */}
+           <div className="relative z-10 flex justify-between items-center p-6 md:p-12">
+             <div className="font-bold text-xl leading-none">
+               The<br/>portfolio<br/>club
+             </div>
+             <div className="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-medium">
+               <span>Planos</span>
+               <span>Sobre Nós</span>
+               <button className="bg-brand-yellow text-brand-dark px-6 py-2 rounded-full flex items-center gap-2 hover:bg-white transition-colors">
+                 Junte-se <ArrowRight size={14} />
+               </button>
+             </div>
+           </div>
 
-            <motion.div 
-              key={`${niche}-hero-img`}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative"
-            >
-              <div className={cn("absolute inset-0 rounded-3xl opacity-20 blur-3xl", currentNiche.colors.primary)}></div>
-              <div className={cn("relative aspect-square rounded-3xl overflow-hidden border-8 shadow-2xl", currentNiche.colors.border, "bg-white")}>
-                <img 
-                  src={`https://picsum.photos/seed/${niche}business/800/800`} 
-                  alt={`${currentNiche.name} representação`}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+           <div className="relative z-10 flex-grow flex flex-col justify-center max-w-7xl mx-auto px-6 md:px-12 w-full">
+             <div className="max-w-2xl mb-32">
+               <p className="text-xl md:text-2xl mb-8 leading-snug font-medium">
+                 {currentNiche.hero.subtitle}
+               </p>
+               
+               <SectionWrapper id="cta" className="-m-4 p-4 inline-block">
+                 <XrayMarker id="cta" position="-top-2 -right-2" />
+                 <button className="bg-brand-yellow text-brand-dark px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-white transition-colors">
+                   {currentNiche.hero.cta} <ArrowRight size={18} />
+                 </button>
+               </SectionWrapper>
+             </div>
+           </div>
+           
+           {/* Huge Title overlapping bottom */}
+           <div className="absolute bottom-0 left-0 w-full translate-y-[15%] px-6 md:px-12 pointer-events-none">
+             <h1 className="text-[14vw] font-bold leading-none tracking-tighter text-brand-yellow mix-blend-normal whitespace-nowrap">
+               The {currentNiche.name.toLowerCase()} club
+             </h1>
+           </div>
+        </SectionWrapper>
+
+        {/* ABOUT / ROI SECTION (Olive background) */}
+        <SectionWrapper id="features" className="bg-brand-olive text-brand-yellow py-32">
+          <XrayMarker id="features" position="top-8 left-8" />
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="grid md:grid-cols-12 gap-12">
+              <div className="md:col-span-3">
+                <p className="text-xs tracking-widest uppercase font-medium">[ ESTRATÉGIA ]</p>
+              </div>
+              <div className="md:col-span-9">
+                <h2 className="text-3xl md:text-5xl font-medium leading-tight mb-16 max-w-4xl">
+                  Transformamos a confiança gerada pelo design em retorno financeiro direto para o seu negócio de {currentNiche.name.toLowerCase()}.
+                </h2>
                 
-                {/* Floating Trust Badge */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl flex items-center gap-4">
-                  <div className={cn("w-12 h-12 rounded-full flex items-center justify-center", currentNiche.colors.bg, currentNiche.colors.accentText)}>
-                    <CheckCircle size={24} />
+                {/* Stats / ROI */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-brand-yellow/30 pt-12">
+                  <div>
+                    <p className="text-4xl md:text-5xl font-medium mb-2">{(currentNiche.roi.conversionRate * 100).toFixed(1)}%</p>
+                    <p className="text-sm opacity-80">Conversão Atual</p>
                   </div>
                   <div>
-                    <p className="font-bold text-slate-900">Resultados Comprovados</p>
-                    <p className="text-sm text-slate-500">Mais de 500 clientes satisfeitos</p>
+                    <p className="text-4xl md:text-5xl font-medium mb-2">{(currentNiche.roi.conversionRate * 1.5 * 100).toFixed(1)}%</p>
+                    <p className="text-sm opacity-80">Meta Otimizada</p>
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-4xl md:text-5xl font-medium mb-2">+ R$ {(optimizedRevenue - monthlyRevenue).toLocaleString()}</p>
+                    <p className="text-sm opacity-80">Potencial de Receita Adicional / mês</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </SectionWrapper>
 
-        {/* Features Section */}
-        <div className="bg-white py-24">
-          <SectionWrapper id="features" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <XrayMarker id="features" position="-top-4 -left-4" />
-            
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className={cn("text-3xl md:text-4xl font-bold mb-4", currentNiche.colors.text)}>
-                Por que nos escolher?
+        {/* FEATURES GRID (Light background) */}
+        <div className="bg-brand-light text-brand-dark py-32">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+              <h2 className="text-4xl md:text-6xl font-medium tracking-tight max-w-2xl leading-tight">
+                Metodologia focada em conversão e experiência.
               </h2>
-              <p className="text-lg text-slate-600">
-                Nossa abordagem é focada em resolver os problemas reais do seu negócio, entregando valor em cada interação.
-              </p>
+              <p className="text-xs tracking-widest uppercase font-medium">[ COMO FUNCIONA ]</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6">
               {currentNiche.features.map((feature, index) => (
-                <motion.div 
-                  key={`${niche}-feature-${index}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={cn("p-8 rounded-2xl border transition-all hover:shadow-xl", currentNiche.colors.border, currentNiche.colors.bg)}
-                >
-                  <div className={cn("w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-white shadow-sm", currentNiche.colors.accentText)}>
-                    <CheckCircle size={28} />
-                  </div>
-                  <h3 className={cn("text-xl font-bold mb-3", currentNiche.colors.text)}>{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
-                </motion.div>
+                <div key={index} className="border border-brand-dark/20 p-8 flex flex-col h-full bg-white">
+                  <p className="text-xs tracking-widest mb-8 font-medium">[ 0{index + 1} ]</p>
+                  <h3 className="text-2xl font-medium mb-4">{feature.title}</h3>
+                  <p className="text-brand-dark/70 mt-auto leading-relaxed">{feature.desc}</p>
+                </div>
               ))}
             </div>
-          </SectionWrapper>
+          </div>
         </div>
 
-        {/* Educational Footer for the Consultant (Hidden in End-Client) */}
-        {!isEndClient && (
-          <div className="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-            <div className="max-w-7xl mx-auto px-4 text-center">
-              <p className="mb-4 text-slate-300 font-medium">Plataforma de Demonstração Estratégica</p>
-              <p className="text-sm max-w-2xl mx-auto">
-                Este ambiente foi criado para demonstrar como o design focado em conversão e a arquitetura de informação 
-                impactam diretamente os resultados de negócios em diferentes nichos.
-              </p>
+        {/* EVENTS / CARDS SECTION */}
+        <div className="bg-brand-light text-brand-dark pb-32">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="flex flex-col items-center text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6">
+                Exemplos de Aplicação.
+              </h2>
+              <button className="inline-flex items-center gap-2 text-sm font-medium border-b border-brand-dark pb-1 hover:opacity-70 transition-opacity">
+                <Settings size={14} /> Ver todos os casos
+              </button>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="group cursor-pointer">
+                  <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-brand-dark/5">
+                    <img src={`https://picsum.photos/seed/${niche}case${i}/600/800`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={`Case ${i}`} />
+                    <div className="absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-lg transition-transform group-hover:scale-110">
+                      <ArrowUpRight size={20} className="text-brand-dark" />
+                    </div>
+                    <div className="absolute top-4 left-4 bg-white px-3 py-1 text-xs font-medium rounded-full">
+                      Case 0{i}
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-medium uppercase tracking-wide mb-1">Projeto {currentNiche.name} {i}</h3>
+                  <p className="text-sm text-brand-dark/60">Otimização de fluxo de agendamento e redução de bounce rate.</p>
+                </div>
+              ))}
             </div>
           </div>
-        )}
+        </div>
 
+        {/* FOOTER */}
+        <footer className="bg-brand-dark text-brand-yellow py-24">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="grid md:grid-cols-2 gap-12 items-end">
+              <div>
+                <h2 className="text-6xl md:text-8xl font-bold tracking-tighter leading-none mb-8">
+                  The<br/>portfolio<br/>club
+                </h2>
+                <p className="text-sm opacity-80 max-w-xs">
+                  Onde o design encontra a estratégia de negócios.
+                </p>
+              </div>
+              <div className="flex flex-col md:items-end gap-8">
+                <div className="flex gap-12 text-sm">
+                  <div className="flex flex-col gap-2">
+                    <span className="font-medium mb-2">Contato</span>
+                    <a href="#" className="opacity-80 hover:opacity-100">hello@portfolioclub.com</a>
+                    <a href="#" className="opacity-80 hover:opacity-100">+55 11 99999-9999</a>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="font-medium mb-2">Legal</span>
+                    <a href="#" className="opacity-80 hover:opacity-100">Privacidade</a>
+                    <a href="#" className="opacity-80 hover:opacity-100">Termos</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </main>
     </div>
   );
