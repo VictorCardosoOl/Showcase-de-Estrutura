@@ -20,9 +20,9 @@ const niches = {
       cta: 'Agende uma Consulta',
     },
     features: [
-      { title: 'Análise de Contratos', desc: 'Revisão minuciosa para evitar passivos e garantir segurança jurídica.' },
-      { title: 'Defesa Trabalhista', desc: 'Proteção completa para sua empresa contra processos indevidos.' },
-      { title: 'Consultoria Tributária', desc: 'Otimização de impostos dentro da lei para maximizar seus lucros.' },
+      { title: 'Análise de Contratos', desc: 'Revisão minuciosa para evitar passivos e garantir segurança jurídica.', impact: 'Aumenta a percepção de segurança em 45%, reduzindo o abandono da página.' },
+      { title: 'Defesa Trabalhista', desc: 'Proteção completa para sua empresa contra processos indevidos.', impact: 'Gera autoridade imediata, aumentando cliques no CTA em 20%.' },
+      { title: 'Consultoria Tributária', desc: 'Otimização de impostos dentro da lei para maximizar seus lucros.', impact: 'Foco em dor financeira converte 3x mais visitantes analíticos.' },
     ],
     roi: {
       visitors: 1000,
@@ -39,9 +39,9 @@ const niches = {
       cta: 'Marcar Exame',
     },
     features: [
-      { title: 'Corpo Clínico Renomado', desc: 'Especialistas com anos de experiência e formação nas melhores instituições.' },
-      { title: 'Equipamentos Modernos', desc: 'Diagnósticos precisos e rápidos com tecnologia de última geração.' },
-      { title: 'Atendimento 24h', desc: 'Sempre prontos para cuidar de você, a qualquer hora do dia ou da noite.' },
+      { title: 'Corpo Clínico Renomado', desc: 'Especialistas com anos de experiência e formação nas melhores instituições.', impact: 'Prova social forte: +35% de agendamentos diretos.' },
+      { title: 'Equipamentos Modernos', desc: 'Diagnósticos precisos e rápidos com tecnologia de última geração.', impact: 'Reduz objeções sobre qualidade, aumentando o tempo na página.' },
+      { title: 'Atendimento 24h', desc: 'Sempre prontos para cuidar de você, a qualquer hora do dia ou da noite.', impact: 'Gatilho de urgência/disponibilidade: +50% de conversão mobile.' },
     ],
     roi: {
       visitors: 2000,
@@ -58,9 +58,9 @@ const niches = {
       cta: 'Fazer Reserva',
     },
     features: [
-      { title: 'Menu Degustação', desc: 'Uma jornada de sabores únicos criada pelo nosso chef premiado.' },
-      { title: 'Carta de Vinhos', desc: 'Rótulos selecionados por sommeliers para harmonizar perfeitamente.' },
-      { title: 'Eventos Privados', desc: 'Espaço exclusivo e atendimento personalizado para suas celebrações.' },
+      { title: 'Menu Degustação', desc: 'Uma jornada de sabores únicos criada pelo nosso chef premiado.', impact: 'Imagens de alta qualidade aqui aumentam reservas em 40%.' },
+      { title: 'Carta de Vinhos', desc: 'Rótulos selecionados por sommeliers para harmonizar perfeitamente.', impact: 'Aumenta o ticket médio percebido antes mesmo da visita.' },
+      { title: 'Eventos Privados', desc: 'Espaço exclusivo e atendimento personalizado para suas celebrações.', impact: 'Formulários dedicados para eventos convertem leads B2B de alto valor.' },
     ],
     roi: {
       visitors: 5000,
@@ -77,9 +77,9 @@ const niches = {
       cta: 'Ver Ofertas',
     },
     features: [
-      { title: 'Entrega Rápida', desc: 'Receba suas compras em casa no mesmo dia, com total comodidade.' },
-      { title: 'Produtos Frescos', desc: 'Reposição diária de hortifruti e produtos perecíveis de alta qualidade.' },
-      { title: 'Clube de Vantagens', desc: 'Descontos exclusivos e ofertas personalizadas para clientes fiéis.' },
+      { title: 'Entrega Rápida', desc: 'Receba suas compras em casa no mesmo dia, com total comodidade.', impact: 'O maior motivador de compra local: reduz abandono de carrinho em 60%.' },
+      { title: 'Produtos Frescos', desc: 'Reposição diária de hortifruti e produtos perecíveis de alta qualidade.', impact: 'Gera recorrência. Clientes que confiam compram 4x mais.' },
+      { title: 'Clube de Vantagens', desc: 'Descontos exclusivos e ofertas personalizadas para clientes fiéis.', impact: 'Aumenta o LTV (Life Time Value) e a retenção em 25%.' },
     ],
     roi: {
       visitors: 10000,
@@ -168,14 +168,45 @@ export default function App() {
     );
   };
 
-  const SectionWrapper = ({ children, id, className }: { children: React.ReactNode, id: keyof typeof xrayData, className?: string }) => {
+  const SectionWrapper = ({ children, id, htmlId, className }: { children: React.ReactNode, id: keyof typeof xrayData | 'none', htmlId?: string, className?: string }) => {
     return (
-      <div className={cn(
+      <div id={htmlId} className={cn(
         "relative transition-all duration-500",
-        mode === 'xray' ? "border-2 border-dashed border-brand-yellow/50 m-4 p-4" : "",
+        mode === 'xray' && id !== 'none' ? "border-2 border-dashed border-brand-yellow/50 m-4 p-4" : "",
         className
       )}>
         {children}
+      </div>
+    );
+  };
+
+  const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    
+    return (
+      <div 
+        className="relative border border-brand-dark/20 p-8 flex flex-col h-full bg-white group cursor-help"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <p className="text-xs tracking-widest mb-8 font-medium">[ 0{index + 1} ]</p>
+        <h3 className="text-2xl font-medium mb-4">{feature.title}</h3>
+        <p className="text-brand-dark/70 mt-auto leading-relaxed">{feature.desc}</p>
+        
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 bg-brand-dark text-brand-yellow p-4 rounded-lg shadow-xl z-20 pointer-events-none"
+            >
+              <div className="text-xs font-bold uppercase tracking-wider mb-1">Impacto UX</div>
+              <div className="text-sm opacity-90">{feature.impact}</div>
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[8px] border-l-transparent border-r-transparent border-t-brand-dark"></div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     );
   };
@@ -351,11 +382,11 @@ export default function App() {
                The<br/>portfolio<br/>club
              </div>
              <div className="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-medium">
-               <span>Planos</span>
-               <span>Sobre Nós</span>
-               <button className="bg-brand-yellow text-brand-dark px-6 py-2 rounded-full flex items-center gap-2 hover:bg-white transition-colors">
+               <a href="#planos" className="hover:opacity-70 transition-opacity">Planos</a>
+               <a href="#sobre-nos" className="hover:opacity-70 transition-opacity">Sobre Nós</a>
+               <a href="#hero" className="bg-brand-yellow text-brand-dark px-6 py-2 rounded-full flex items-center gap-2 hover:bg-white transition-colors">
                  Junte-se <ArrowRight size={14} />
-               </button>
+               </a>
              </div>
            </div>
 
@@ -383,7 +414,7 @@ export default function App() {
         </SectionWrapper>
 
         {/* ABOUT / ROI SECTION (Olive background) */}
-        <SectionWrapper id="features" className="bg-brand-olive text-brand-yellow py-32">
+        <SectionWrapper id="none" htmlId="sobre-nos" className="bg-brand-olive text-brand-yellow py-32">
           <XrayMarker id="features" position="top-8 left-8" />
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="grid md:grid-cols-12 gap-12">
@@ -396,18 +427,63 @@ export default function App() {
                 </h2>
                 
                 {/* Stats / ROI */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-brand-yellow/30 pt-12">
-                  <div>
-                    <p className="text-4xl md:text-5xl font-medium mb-2">{(currentNiche.roi.conversionRate * 100).toFixed(1)}%</p>
-                    <p className="text-sm opacity-80">Conversão Atual</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-brand-yellow/30 pt-12">
+                  <div className="grid grid-cols-2 gap-8">
+                    <div>
+                      <p className="text-4xl md:text-5xl font-medium mb-2">{(currentNiche.roi.conversionRate * 100).toFixed(1)}%</p>
+                      <p className="text-sm opacity-80">Conversão Atual</p>
+                    </div>
+                    <div>
+                      <p className="text-4xl md:text-5xl font-medium mb-2">{(currentNiche.roi.conversionRate * 1.5 * 100).toFixed(1)}%</p>
+                      <p className="text-sm opacity-80">Meta Otimizada</p>
+                    </div>
+                    <div className="col-span-2">
+                      <p className="text-4xl md:text-5xl font-medium mb-2">+ R$ {(optimizedRevenue - monthlyRevenue).toLocaleString()}</p>
+                      <p className="text-sm opacity-80">Potencial de Receita Adicional / mês</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-4xl md:text-5xl font-medium mb-2">{(currentNiche.roi.conversionRate * 1.5 * 100).toFixed(1)}%</p>
-                    <p className="text-sm opacity-80">Meta Otimizada</p>
-                  </div>
-                  <div className="col-span-2">
-                    <p className="text-4xl md:text-5xl font-medium mb-2">+ R$ {(optimizedRevenue - monthlyRevenue).toLocaleString()}</p>
-                    <p className="text-sm opacity-80">Potencial de Receita Adicional / mês</p>
+                  
+                  {/* Animated Bar Chart */}
+                  <div className="flex flex-col justify-center gap-8 bg-brand-dark/10 p-8 rounded-2xl">
+                    <div>
+                      <div className="flex justify-between text-sm mb-3 font-medium">
+                        <span>Receita Atual</span>
+                        <span>R$ {monthlyRevenue.toLocaleString()}</span>
+                      </div>
+                      <div className="w-full bg-brand-dark/20 h-6 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: '66%' }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ duration: 1, ease: "easeOut" }}
+                          className="h-full bg-brand-yellow/50"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex justify-between text-sm mb-3 font-medium">
+                        <span>Receita Otimizada</span>
+                        <span className="text-brand-yellow font-bold">R$ {optimizedRevenue.toLocaleString()}</span>
+                      </div>
+                      <div className="w-full bg-brand-dark/20 h-6 rounded-full overflow-hidden relative">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: '100%' }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                          className="h-full bg-brand-yellow relative"
+                        >
+                          <motion.div 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 1.2 }}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-dark text-xs font-bold"
+                          >
+                            +50%
+                          </motion.div>
+                        </motion.div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -427,18 +503,14 @@ export default function App() {
 
             <div className="grid md:grid-cols-3 gap-6">
               {currentNiche.features.map((feature, index) => (
-                <div key={index} className="border border-brand-dark/20 p-8 flex flex-col h-full bg-white">
-                  <p className="text-xs tracking-widest mb-8 font-medium">[ 0{index + 1} ]</p>
-                  <h3 className="text-2xl font-medium mb-4">{feature.title}</h3>
-                  <p className="text-brand-dark/70 mt-auto leading-relaxed">{feature.desc}</p>
-                </div>
+                <FeatureCard key={index} feature={feature} index={index} />
               ))}
             </div>
           </div>
         </div>
 
         {/* EVENTS / CARDS SECTION */}
-        <div className="bg-brand-light text-brand-dark pb-32">
+        <div id="planos" className="bg-brand-light text-brand-dark pb-32">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex flex-col items-center text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-medium tracking-tight mb-6">
