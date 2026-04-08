@@ -287,13 +287,13 @@ export default function App() {
                 className="absolute top-12 left-0 w-80 bg-brand-dark text-brand-yellow rounded-xl shadow-2xl border border-brand-yellow/20 p-5 text-left"
               >
                 <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-bold">{data.title}</h4>
+                  <h4 className="font-display font-bold text-lg">{data.title}</h4>
                   <button onClick={() => setActiveXray(null)} className="text-brand-yellow/60 hover:text-brand-yellow">
                     <X size={16} />
                   </button>
                 </div>
-                <p className="text-sm opacity-80 mb-4 leading-relaxed">{data.desc}</p>
-                <div className="bg-brand-yellow text-brand-dark text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-2">
+                <p className="font-sans text-sm opacity-80 mb-4 leading-relaxed">{data.desc}</p>
+                <div className="font-sans bg-brand-yellow text-brand-dark text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-2">
                   <TrendingUp size={14} />
                   Impacto: {data.conversionImpact}
                 </div>
@@ -342,13 +342,13 @@ export default function App() {
         ref={cardRef}
         className="relative border border-brand-dark/20 p-[clamp(1.5rem,3vw,2rem)] flex flex-col h-full bg-white group overflow-hidden"
       >
-        <p className="text-xs tracking-widest mb-8 font-medium">[ 0{index + 1} ]</p>
-        <h3 className="text-[clamp(1.25rem,2vw,1.5rem)] font-medium mb-4">{feature.title}</h3>
-        <p className="text-brand-dark/70 mt-auto leading-relaxed mb-8">{feature.desc}</p>
+        <p className="font-sans text-xs tracking-widest mb-8 font-medium">[ 0{index + 1} ]</p>
+        <h3 className="font-display text-[clamp(1.25rem,2vw,1.5rem)] font-bold mb-4">{feature.title}</h3>
+        <p className="font-sans text-brand-dark/70 mt-auto leading-relaxed mb-8">{feature.desc}</p>
         
         <div className="absolute bottom-0 left-0 w-full p-[clamp(1.5rem,3vw,2rem)] bg-brand-dark text-brand-yellow transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex flex-col justify-center h-full sm:h-auto sm:min-h-[40%]">
-          <div className="text-xs font-bold uppercase tracking-wider mb-2">Impacto UX</div>
-          <div className="text-sm opacity-90 leading-relaxed">{feature.impact}</div>
+          <div className="font-sans text-xs font-bold uppercase tracking-wider mb-2">Impacto UX</div>
+          <div className="font-sans text-sm opacity-90 leading-relaxed">{feature.impact}</div>
         </div>
       </div>
     );

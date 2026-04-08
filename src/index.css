@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -6,6 +7,7 @@
   --color-brand-yellow: var(--theme-yellow);
   --color-brand-light: var(--theme-light);
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
 }

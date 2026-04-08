@@ -38,40 +38,40 @@ export function Navbar() {
     <header
       ref={navRef}
       className={cn(
-        "fixed top-0 left-0 w-full z-50",
-        "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+        "bg-brand-light/85 backdrop-blur-xl border-b border-brand-dark/5 shadow-sm"
       )}
     >
       <div className="max-w-[1920px] mx-auto px-[clamp(1.5rem,5vw,4rem)]">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center cursor-pointer">
-            <span className="font-bold text-2xl tracking-tight text-gray-900">
-              Brand<span className="text-blue-600">.</span>
+            <span className="font-display font-bold text-3xl tracking-tight text-brand-dark">
+              Brand<span className="text-brand-yellow">.</span>
             </span>
           </div>
 
           {/* Links de Navegação (Desktop) */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-10">
             {['Home', 'Soluções', 'Metodologia', 'Casos'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors relative group"
+                className="text-brand-dark/70 hover:text-brand-dark px-2 py-2 text-[15px] font-medium transition-colors relative group font-sans tracking-wide"
               >
                 {item}
                 {/* Efeito de hover (underline animado) */}
-                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-blue-600 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span className="absolute inset-x-0 bottom-0 h-[2px] bg-brand-yellow transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
               </a>
             ))}
           </nav>
 
           {/* CTA / Ações */}
-          <div className="flex items-center space-x-4">
-            <button className="hidden md:inline-flex text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors">
+          <div className="flex items-center space-x-6">
+            <button className="hidden md:inline-flex text-brand-dark/70 hover:text-brand-dark font-medium text-[15px] transition-colors font-sans tracking-wide">
               Login
             </button>
-            <button className="bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+            <button className="bg-brand-dark text-brand-yellow px-7 py-3 rounded-full text-[15px] font-medium hover:bg-brand-dark/90 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 font-sans tracking-wide">
               Começar Agora
             </button>
           </div>

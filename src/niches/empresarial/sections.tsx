@@ -14,10 +14,10 @@ export const HeroSection = ({ nicheId, currentNiche, SectionWrapper, XrayMarker 
         <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full text-blue-400 text-sm font-bold mb-8">
           <Globe size={16} /> Soluções Globais para Negócios Locais
         </div>
-        <h1 className="text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.1] mb-8 tracking-tight">
+        <h1 className="font-display text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.1] mb-8 tracking-tight">
           {currentNiche.hero.title}
         </h1>
-        <p className="text-[clamp(1.125rem,2vw,1.5rem)] mb-12 text-slate-400 leading-relaxed max-w-2xl">
+        <p className="font-sans text-[clamp(1.125rem,2vw,1.5rem)] mb-12 text-slate-400 leading-relaxed max-w-2xl">
           {currentNiche.hero.subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-6">
@@ -48,8 +48,8 @@ export const ServicesSection = ({ SectionWrapper }: any) => (
     <div className="max-w-7xl mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-20 items-end mb-20">
         <div>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Nossas Soluções Corporativas</h2>
-          <p className="text-lg text-slate-600 leading-relaxed">Desenvolvemos estratégias robustas para otimizar seus processos e maximizar a rentabilidade do seu negócio.</p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Nossas Soluções Corporativas</h2>
+          <p className="font-sans text-lg text-slate-600 leading-relaxed">Desenvolvemos estratégias robustas para otimizar seus processos e maximizar a rentabilidade do seu negócio.</p>
         </div>
         <div className="flex lg:justify-end">
           <div className="bg-white p-6 rounded-2xl shadow-xl shadow-slate-200/50 flex items-center gap-6 border border-slate-100">
@@ -68,8 +68,8 @@ export const ServicesSection = ({ SectionWrapper }: any) => (
             <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
               <s.icon size={32} />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">{s.title}</h3>
-            <p className="text-slate-600 leading-relaxed">{s.desc}</p>
+            <h3 className="font-display text-2xl font-bold text-slate-900 mb-4">{s.title}</h3>
+            <p className="font-sans text-slate-600 leading-relaxed">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -81,8 +81,8 @@ export const MethodologySection = ({ SectionWrapper }: any) => (
   <SectionWrapper id="methodology" className="py-32 bg-white">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center mb-20">
-        <h2 className="text-4xl font-bold text-slate-900 mb-6">Como Trabalhamos</h2>
-        <p className="text-slate-600 max-w-2xl mx-auto">Um processo estruturado para garantir previsibilidade e resultados consistentes em cada projeto.</p>
+        <h2 className="font-display text-4xl font-bold text-slate-900 mb-6">Como Trabalhamos</h2>
+        <p className="font-sans text-slate-600 max-w-2xl mx-auto">Um processo estruturado para garantir previsibilidade e resultados consistentes em cada projeto.</p>
       </div>
       <div className="grid md:grid-cols-4 gap-12 relative">
         <div className="hidden md:block absolute top-12 left-0 w-full h-px bg-slate-100 z-0"></div>
@@ -96,8 +96,8 @@ export const MethodologySection = ({ SectionWrapper }: any) => (
             <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mb-8 mx-auto md:mx-0 shadow-lg shadow-blue-600/30">
               {m.step}
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-4">{m.title}</h3>
-            <p className="text-slate-600 text-sm leading-relaxed">{m.desc}</p>
+            <h3 className="font-display text-xl font-bold text-slate-900 mb-4">{m.title}</h3>
+            <p className="font-sans text-slate-600 text-sm leading-relaxed">{m.desc}</p>
           </div>
         ))}
       </div>
@@ -110,8 +110,8 @@ export const PortfolioSection = ({ SectionWrapper }: any) => (
     <div className="max-w-7xl mx-auto px-6">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
         <div>
-          <h2 className="text-4xl font-bold mb-6">Cases de Sucesso</h2>
-          <p className="text-slate-400 max-w-xl">Resultados reais entregues para empresas que buscam excelência e inovação constante.</p>
+          <h2 className="font-display text-4xl font-bold mb-6">Cases de Sucesso</h2>
+          <p className="font-sans text-slate-400 max-w-xl">Resultados reais entregues para empresas que buscam excelência e inovação constante.</p>
         </div>
         <div className="flex gap-12 opacity-50">
           {[1, 2, 3, 4].map(i => (
@@ -128,8 +128,8 @@ export const PortfolioSection = ({ SectionWrapper }: any) => (
             <img src={`https://picsum.photos/seed/${c.img}/1200/800`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Case" referrerPolicy="no-referrer" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent"></div>
             <div className="absolute bottom-10 left-10 right-10">
-              <h3 className="text-2xl font-bold mb-2">{c.title}</h3>
-              <p className="text-blue-400 font-bold">{c.result}</p>
+              <h3 className="font-display text-2xl font-bold mb-2">{c.title}</h3>
+              <p className="font-sans text-blue-400 font-bold">{c.result}</p>
             </div>
           </div>
         ))}
@@ -142,8 +142,8 @@ export const TeamSection = ({ SectionWrapper }: any) => (
   <SectionWrapper id="team" className="py-32 bg-white">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center mb-20">
-        <h2 className="text-4xl font-bold text-slate-900 mb-6">Nossa Liderança</h2>
-        <p className="text-slate-600 max-w-2xl mx-auto">Um time multidisciplinar focado em transformar a realidade do seu negócio através da expertise e inovação.</p>
+        <h2 className="font-display text-4xl font-bold text-slate-900 mb-6">Nossa Liderança</h2>
+        <p className="font-sans text-slate-600 max-w-2xl mx-auto">Um time multidisciplinar focado em transformar a realidade do seu negócio através da expertise e inovação.</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {[

@@ -15,10 +15,10 @@ export const HeroSection = ({ nicheId, currentNiche, SectionWrapper, XrayMarker 
           {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
           <span className="text-sm font-bold uppercase tracking-widest ml-2">A melhor experiência da cidade</span>
         </div>
-        <h1 className="text-[clamp(3rem,8vw,6rem)] font-black leading-[0.9] mb-8 uppercase italic tracking-tighter">
+        <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-black leading-[0.9] mb-8 uppercase italic tracking-tighter">
           {currentNiche.hero.title}
         </h1>
-        <p className="text-[clamp(1.125rem,2vw,1.5rem)] mb-12 text-white/80 font-medium max-w-xl leading-relaxed">
+        <p className="font-sans text-[clamp(1.125rem,2vw,1.5rem)] mb-12 text-white/80 font-medium max-w-xl leading-relaxed">
           {currentNiche.hero.subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
@@ -50,16 +50,16 @@ export const MenuSection = ({ SectionWrapper }: any) => (
           { cat: 'Pratos Principais', items: [{ n: 'Risoto de Cogumelos', p: 'R$ 89', d: 'Arroz arbóreo, mix de cogumelos frescos e queijo pecorino.' }, { n: 'Salmão Grelhado', p: 'R$ 115', d: 'Filé de salmão com crosta de ervas e purê de mandioquinha.' }] },
         ].map((category, i) => (
           <div key={i}>
-            <h3 className="text-2xl font-black uppercase italic text-brand-yellow mb-8 border-b-2 border-brand-yellow/20 pb-2">{category.cat}</h3>
+            <h3 className="font-display text-2xl font-black uppercase italic text-brand-yellow mb-8 border-b-2 border-brand-yellow/20 pb-2">{category.cat}</h3>
             <div className="space-y-10">
               {category.items.map((item, j) => (
                 <div key={j} className="group cursor-pointer">
                   <div className="flex justify-between items-end mb-2">
-                    <h4 className="text-xl font-bold text-brand-dark group-hover:text-brand-yellow transition-colors">{item.n}</h4>
+                    <h4 className="font-display text-xl font-bold text-brand-dark group-hover:text-brand-yellow transition-colors">{item.n}</h4>
                     <div className="flex-grow border-b border-dotted border-brand-dark/20 mx-4 mb-1"></div>
-                    <span className="font-bold text-brand-dark">{item.p}</span>
+                    <span className="font-sans font-bold text-brand-dark">{item.p}</span>
                   </div>
-                  <p className="text-brand-dark/50 text-sm leading-relaxed">{item.d}</p>
+                  <p className="font-sans text-brand-dark/50 text-sm leading-relaxed">{item.d}</p>
                 </div>
               ))}
             </div>
@@ -81,8 +81,8 @@ export const ReservationsSection = ({ SectionWrapper }: any) => (
       <div className="bg-brand-yellow rounded-[3rem] p-12 md:p-24 text-brand-dark flex flex-col md:flex-row items-center gap-16 relative overflow-hidden">
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/20 rounded-full blur-3xl"></div>
         <div className="flex-1 z-10">
-          <h2 className="text-5xl font-black uppercase italic tracking-tighter mb-8 leading-none">Garanta sua Mesa</h2>
-          <p className="text-xl font-medium mb-12 opacity-80 leading-relaxed">Evite filas e garanta o melhor lugar da casa para o seu momento especial. Reservas disponíveis para almoço e jantar.</p>
+          <h2 className="font-display text-5xl font-black uppercase italic tracking-tighter mb-8 leading-none">Garanta sua Mesa</h2>
+          <p className="font-sans text-xl font-medium mb-12 opacity-80 leading-relaxed">Evite filas e garanta o melhor lugar da casa para o seu momento especial. Reservas disponíveis para almoço e jantar.</p>
           <div className="flex flex-wrap gap-6">
             <button className="bg-brand-dark text-white px-10 py-5 rounded-full font-bold flex items-center gap-3 hover:scale-105 transition-transform">
               <Calendar size={20} /> Reservar Online
@@ -106,8 +106,8 @@ export const GallerySection = ({ SectionWrapper }: any) => (
   <SectionWrapper id="gallery" className="py-32 bg-white">
     <div className="max-w-[1920px] mx-auto px-6">
       <div className="text-center mb-20">
-        <h2 className="text-5xl font-black uppercase italic tracking-tighter text-brand-dark mb-6">Nossa Atmosfera</h2>
-        <p className="text-brand-dark/60 max-w-xl mx-auto font-medium">Um ambiente pensado nos mínimos detalhes para proporcionar conforto e sofisticação.</p>
+        <h2 className="font-display text-5xl font-black uppercase italic tracking-tighter text-brand-dark mb-6">Nossa Atmosfera</h2>
+        <p className="font-sans text-brand-dark/60 max-w-xl mx-auto font-medium">Um ambiente pensado nos mínimos detalhes para proporcionar conforto e sofisticação.</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
@@ -138,7 +138,7 @@ export const LocationSection = ({ SectionWrapper }: any) => (
           </div>
         </div>
         <div className="order-1 lg:order-2">
-          <h2 className="text-5xl font-black uppercase italic tracking-tighter text-brand-dark mb-10">Onde Estamos</h2>
+          <h2 className="font-display text-5xl font-black uppercase italic tracking-tighter text-brand-dark mb-10">Onde Estamos</h2>
           <div className="space-y-10">
             <div className="flex items-start gap-6">
               <div className="w-14 h-14 bg-brand-yellow rounded-2xl flex items-center justify-center text-brand-dark shrink-0">

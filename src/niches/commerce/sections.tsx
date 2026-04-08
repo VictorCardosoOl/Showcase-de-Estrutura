@@ -14,10 +14,10 @@ export const HeroSection = ({ nicheId, currentNiche, SectionWrapper, XrayMarker 
         <span className="inline-block bg-brand-yellow text-brand-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
           Nova Coleção 2024
         </span>
-        <h1 className="text-[clamp(2.5rem,6vw,4rem)] font-bold leading-tight mb-6">
+        <h1 className="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold leading-tight mb-6">
           {currentNiche.hero.title}
         </h1>
-        <p className="text-lg mb-10 opacity-90 max-w-md">
+        <p className="font-sans text-lg mb-10 opacity-90 max-w-md">
           {currentNiche.hero.subtitle}
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
@@ -58,7 +58,7 @@ export const CategoriesSection = ({ SectionWrapper }: any) => (
             <img src={`https://picsum.photos/seed/cat-${cat.img}/600/600`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={cat.name} referrerPolicy="no-referrer" />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <h3 className="text-white text-xl font-bold uppercase tracking-wider">{cat.name}</h3>
+              <h3 className="font-display text-white text-xl font-bold uppercase tracking-wider">{cat.name}</h3>
             </div>
           </div>
         ))}
@@ -71,8 +71,8 @@ export const ProductShowcaseSection = ({ SectionWrapper }: any) => (
   <SectionWrapper id="products" className="py-24 bg-brand-light">
     <div className="max-w-7xl mx-auto px-6">
       <div className="flex justify-between items-end mb-12">
-        <h2 className="text-3xl font-bold">Vitrine de Produtos</h2>
-        <button className="text-brand-dark font-bold border-b-2 border-brand-yellow hover:text-brand-yellow transition-colors">Ver todos</button>
+        <h2 className="font-display text-3xl font-bold">Vitrine de Produtos</h2>
+        <button className="font-sans text-brand-dark font-bold border-b-2 border-brand-yellow hover:text-brand-yellow transition-colors">Ver todos</button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {[1, 2, 3, 4].map((p) => (
@@ -84,8 +84,8 @@ export const ProductShowcaseSection = ({ SectionWrapper }: any) => (
               </button>
             </div>
             <div className="p-6">
-              <p className="text-xs text-brand-dark/40 font-bold uppercase mb-1">Marca Premium</p>
-              <h3 className="font-bold text-lg mb-2">Produto Exclusivo {p}</h3>
+              <p className="font-sans text-xs text-brand-dark/40 font-bold uppercase mb-1">Marca Premium</p>
+              <h3 className="font-display font-bold text-lg mb-2">Produto Exclusivo {p}</h3>
               <div className="flex items-center gap-3">
                 <span className="text-brand-dark font-bold text-xl">R$ 199,90</span>
                 <span className="text-brand-dark/30 line-through text-sm">R$ 259,90</span>
@@ -104,8 +104,8 @@ export const BestSellersSection = ({ SectionWrapper }: any) => (
       <div className="bg-brand-dark rounded-[3rem] p-12 md:p-20 text-white flex flex-col md:flex-row items-center gap-16 overflow-hidden relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
         <div className="flex-1 z-10 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Os Mais Vendidos</h2>
-          <p className="text-lg opacity-70 mb-10">Confira as peças que são tendência absoluta e garanta a sua antes que acabe o estoque.</p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">Os Mais Vendidos</h2>
+          <p className="font-sans text-lg opacity-70 mb-10">Confira as peças que são tendência absoluta e garanta a sua antes que acabe o estoque.</p>
           <button className="bg-brand-yellow text-brand-dark px-12 py-4 rounded-full font-bold hover:bg-white transition-colors">
             Explorar Favoritos
           </button>
@@ -126,7 +126,7 @@ export const BestSellersSection = ({ SectionWrapper }: any) => (
 export const FAQSection = ({ SectionWrapper }: any) => (
   <SectionWrapper id="faq" className="py-24 bg-brand-light">
     <div className="max-w-3xl mx-auto px-6">
-      <h2 className="text-3xl font-bold mb-12 text-center">Dúvidas Frequentes</h2>
+      <h2 className="font-display text-3xl font-bold mb-12 text-center">Dúvidas Frequentes</h2>
       <div className="space-y-4">
         {[
           { q: 'Qual o prazo de entrega?', a: 'O prazo varia de 3 a 10 dias úteis dependendo da sua região.' },

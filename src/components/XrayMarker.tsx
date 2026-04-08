@@ -40,13 +40,13 @@ export const XrayMarker = ({ id, position }: { id: string, position: string }) =
               className="absolute top-12 left-0 w-80 bg-brand-dark text-brand-yellow rounded-xl shadow-2xl border border-brand-yellow/20 p-5 text-left"
             >
               <div className="flex justify-between items-start mb-2">
-                <h4 className="font-bold">{data.title}</h4>
+                <h4 className="font-display font-bold text-lg">{data.title}</h4>
                 <button onClick={() => setActiveXray(null)} className="text-brand-yellow/60 hover:text-brand-yellow">
                   <X size={16} />
                 </button>
               </div>
-              <p className="text-sm opacity-80 mb-4 leading-relaxed">{data.desc}</p>
-              <div className="bg-brand-yellow text-brand-dark text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-2">
+              <p className="font-sans text-sm opacity-80 mb-4 leading-relaxed">{data.desc}</p>
+              <div className="font-sans bg-brand-yellow text-brand-dark text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-2">
                 <TrendingUp size={14} />
                 Impacto: {data.conversionImpact}
               </div>

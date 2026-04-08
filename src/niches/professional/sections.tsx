@@ -10,10 +10,10 @@ export const HeroSection = ({ nicheId, currentNiche, SectionWrapper, XrayMarker 
     </div>
     <div className="relative z-10 flex-grow flex flex-col justify-center max-w-7xl mx-auto px-6 w-full py-20">
       <div className="max-w-2xl">
-        <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-tight mb-6">
+        <h1 className="font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-tight mb-6">
           {currentNiche.hero.title}
         </h1>
-        <p className="text-[clamp(1.125rem,2vw,1.5rem)] mb-10 opacity-90 font-medium max-w-xl">
+        <p className="font-sans text-[clamp(1.125rem,2vw,1.5rem)] mb-10 opacity-90 font-medium max-w-xl">
           {currentNiche.hero.subtitle}
         </p>
         <SectionWrapper id="cta" className="inline-block w-full sm:w-auto">
@@ -40,8 +40,8 @@ export const BioSection = ({ SectionWrapper }: any) => (
         </div>
       </div>
       <div>
-        <h2 className="text-4xl font-bold mb-8 text-brand-dark">Trajetória e Diferencial Humano</h2>
-        <p className="text-lg text-brand-dark/70 mb-6 leading-relaxed">
+        <h2 className="font-display text-4xl font-bold mb-8 text-brand-dark">Trajetória e Diferencial Humano</h2>
+        <p className="font-sans text-lg text-brand-dark/70 mb-6 leading-relaxed">
           Com formação nas mais renomadas instituições, minha jornada é pautada pela busca incessante da excelência técnica aliada a um atendimento profundamente humanizado.
         </p>
         <p className="text-lg text-brand-dark/70 mb-8 leading-relaxed">
@@ -72,8 +72,8 @@ export const ServicesSection = ({ SectionWrapper }: any) => (
   <SectionWrapper id="services" className="py-24 bg-brand-light">
     <div className="max-w-7xl mx-auto px-6">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Áreas de Atuação</h2>
-        <p className="text-brand-dark/60 max-w-2xl mx-auto">Soluções jurídicas e consultivas com foco em resultados e segurança para você ou sua empresa.</p>
+        <h2 className="font-display text-4xl font-bold mb-4">Áreas de Atuação</h2>
+        <p className="font-sans text-brand-dark/60 max-w-2xl mx-auto">Soluções jurídicas e consultivas com foco em resultados e segurança para você ou sua empresa.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-8">
         {[
@@ -88,8 +88,8 @@ export const ServicesSection = ({ SectionWrapper }: any) => (
             <div className="w-12 h-12 bg-brand-yellow/20 rounded-xl flex items-center justify-center mb-6 text-brand-dark">
               <CheckCircle2 size={24} />
             </div>
-            <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-            <p className="text-brand-dark/60 leading-relaxed">{service.desc}</p>
+            <h3 className="font-display text-xl font-bold mb-3">{service.title}</h3>
+            <p className="font-sans text-brand-dark/60 leading-relaxed">{service.desc}</p>
           </div>
         ))}
       </div>
@@ -100,7 +100,7 @@ export const ServicesSection = ({ SectionWrapper }: any) => (
 export const TestimonialsSection = ({ SectionWrapper }: any) => (
   <SectionWrapper id="testimonials" className="py-24 bg-white">
     <div className="max-w-7xl mx-auto px-6">
-      <h2 className="text-4xl font-bold mb-16 text-center">O que dizem os Clientes</h2>
+      <h2 className="font-display text-4xl font-bold mb-16 text-center">O que dizem os Clientes</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[
           { name: 'Ricardo Silva', role: 'Empresário', text: 'Um profissional extremamente técnico e atencioso. Resolveu meu caso com uma agilidade impressionante.' },
@@ -128,8 +128,8 @@ export const BlogSection = ({ SectionWrapper }: any) => (
     <div className="max-w-7xl mx-auto px-6">
       <div className="flex justify-between items-end mb-12">
         <div>
-          <h2 className="text-4xl font-bold mb-4">Artigos e Insights</h2>
-          <p className="text-brand-dark/60">Conhecimento técnico compartilhado para sua atualização.</p>
+          <h2 className="font-display text-4xl font-bold mb-4">Artigos e Insights</h2>
+          <p className="font-sans text-brand-dark/60">Conhecimento técnico compartilhado para sua atualização.</p>
         </div>
         <button className="hidden md:flex items-center gap-2 text-brand-dark font-bold hover:text-brand-yellow transition-colors">
           Ver todos <ArrowRight size={20} />
@@ -145,9 +145,9 @@ export const BlogSection = ({ SectionWrapper }: any) => (
             <div className="aspect-video rounded-2xl overflow-hidden mb-6">
               <img src={`https://picsum.photos/seed/blog-${i}/600/400`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Blog" referrerPolicy="no-referrer" />
             </div>
-            <p className="text-xs font-bold text-brand-yellow uppercase mb-2">{post.category}</p>
-            <h3 className="text-xl font-bold mb-3 group-hover:text-brand-yellow transition-colors">{post.title}</h3>
-            <p className="text-sm text-brand-dark/50">{post.date}</p>
+            <p className="font-sans text-xs font-bold text-brand-yellow uppercase mb-2">{post.category}</p>
+            <h3 className="font-display text-xl font-bold mb-3 group-hover:text-brand-yellow transition-colors">{post.title}</h3>
+            <p className="font-sans text-sm text-brand-dark/50">{post.date}</p>
           </div>
         ))}
       </div>
