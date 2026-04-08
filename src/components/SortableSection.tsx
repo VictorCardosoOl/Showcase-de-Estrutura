@@ -8,6 +8,7 @@ interface SortableSectionProps {
   id: string;
   children: React.ReactNode;
   isDraggable: boolean;
+  key?: React.Key;
 }
 
 export function SortableSection({ id, children, isDraggable }: SortableSectionProps) {

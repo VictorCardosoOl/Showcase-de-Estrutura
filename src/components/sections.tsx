@@ -15,10 +15,11 @@ export const HeroSection = ({ nicheId, currentNiche, SectionWrapper, XrayMarker 
         <p className="text-[clamp(1.125rem,2.5vw,1.5rem)] mb-8 leading-snug font-medium">
           {currentNiche.hero.subtitle}
         </p>
-        <SectionWrapper id="cta" className="inline-block">
+        <SectionWrapper id="cta" className="inline-block w-full sm:w-auto">
           <XrayMarker id="cta" position="-top-2 -right-2" />
-          <button className="bg-brand-yellow text-brand-dark px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-white transition-colors text-[clamp(0.875rem,1.5vw,1rem)]">
-            {currentNiche.hero.cta} <ArrowRight size={18} />
+          <button className="w-full sm:w-auto bg-brand-yellow text-brand-dark px-[clamp(1.5rem,4vw,3rem)] py-[clamp(1rem,2.5vw,1.5rem)] rounded-full font-bold flex items-center justify-center gap-3 hover:bg-white hover:scale-105 active:scale-95 transition-all duration-300 text-[clamp(1rem,1.8vw,1.25rem)] shadow-xl shadow-brand-yellow/10 group">
+            {currentNiche.hero.cta} 
+            <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </SectionWrapper>
       </div>

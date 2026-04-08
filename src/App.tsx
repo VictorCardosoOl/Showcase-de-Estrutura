@@ -29,7 +29,7 @@ const niches = {
     hero: {
       title: 'Posicionamento estratégico e autoridade no seu mercado.',
       subtitle: 'Soluções sob medida que traduzem a sua expertise em resultados reais. Eleve o padrão da sua atuação profissional.',
-      cta: 'Iniciar Projeto',
+      cta: 'Solicitar Consultoria Estratégica',
     },
     features: [
       { title: 'Estratégia Personalizada', desc: 'Mapeamento detalhado do seu cenário para desenvolver soluções alinhadas aos seus objetivos.', impact: 'Aumenta a percepção de valor e confiança em 45%.' },
@@ -48,7 +48,7 @@ const niches = {
     hero: {
       title: 'Uma experiência inesquecível para o seu paladar.',
       subtitle: 'Ingredientes selecionados, receitas exclusivas e um ambiente acolhedor. Descubra o verdadeiro sabor da nossa cozinha.',
-      cta: 'Ver Cardápio / Reservar',
+      cta: 'Reservar uma Experiência',
     },
     features: [
       { title: 'Menu Exclusivo', desc: 'Uma jornada de sabores únicos criada com paixão e técnica.', impact: 'Imagens de alta qualidade aqui aumentam reservas em 40%.' },
@@ -67,7 +67,7 @@ const niches = {
     hero: {
       title: 'Os melhores produtos, com a qualidade que você confia.',
       subtitle: 'Variedade, curadoria especial e o atendimento que você merece. Compre com facilidade e segurança.',
-      cta: 'Ver Ofertas',
+      cta: 'Explorar Coleção Exclusiva',
     },
     features: [
       { title: 'Logística Eficiente', desc: 'Receba suas compras com rapidez e total comodidade.', impact: 'O maior motivador de compra: reduz abandono de carrinho em 60%.' },
@@ -86,7 +86,7 @@ const niches = {
     hero: {
       title: 'Transformação digital e escala para o seu negócio.',
       subtitle: 'Soluções corporativas robustas para otimizar processos, engajar colaboradores e impulsionar resultados em larga escala.',
-      cta: 'Falar com Especialista',
+      cta: 'Agendar Diagnóstico Corporativo',
     },
     features: [
       { title: 'Automação de Processos', desc: 'Reduza custos operacionais com fluxos de trabalho inteligentes e integrados.', impact: 'Aumenta a eficiência da equipe em até 40%.' },
