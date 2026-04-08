@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { SortableSection } from '../../components/SortableSection';
-import { HeroSection, AboutSection, FeaturesSection, CasesSection, FooterSection } from '../../components/sections';
+import { HeroSection, BioSection, ServicesSection, TestimonialsSection, BlogSection, ContactSection, FooterSection } from './sections';
 
 export default function ProfessionalLayout(props: any) {
   const { mode } = props;
@@ -10,9 +10,11 @@ export default function ProfessionalLayout(props: any) {
 
   const [sections, setSections] = useState([
     { id: 'hero', component: HeroSection },
-    { id: 'about', component: AboutSection },
-    { id: 'features', component: FeaturesSection },
-    { id: 'cases', component: CasesSection },
+    { id: 'bio', component: BioSection },
+    { id: 'services', component: ServicesSection },
+    { id: 'testimonials', component: TestimonialsSection },
+    { id: 'blog', component: BlogSection },
+    { id: 'contact', component: ContactSection },
     { id: 'footer', component: FooterSection },
   ]);
 

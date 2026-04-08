@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { SortableSection } from '../../components/SortableSection';
-import { HeroSection, AboutSection, FeaturesSection, CasesSection, FooterSection } from '../../components/sections';
+import { HeroSection, CategoriesSection, ProductShowcaseSection, BestSellersSection, FAQSection, NewsletterSection, FooterSection } from './sections';
 
 export default function CommerceLayout(props: any) {
   const { mode } = props;
@@ -10,9 +10,11 @@ export default function CommerceLayout(props: any) {
 
   const [sections, setSections] = useState([
     { id: 'hero', component: HeroSection },
-    { id: 'cases', component: CasesSection },
-    { id: 'features', component: FeaturesSection },
-    { id: 'about', component: AboutSection },
+    { id: 'categories', component: CategoriesSection },
+    { id: 'products', component: ProductShowcaseSection },
+    { id: 'bestsellers', component: BestSellersSection },
+    { id: 'faq', component: FAQSection },
+    { id: 'newsletter', component: NewsletterSection },
     { id: 'footer', component: FooterSection },
   ]);
 
