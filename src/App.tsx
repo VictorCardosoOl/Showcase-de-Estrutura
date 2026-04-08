@@ -370,79 +370,79 @@ export default function App() {
         {!isEndClient && (
           <motion.div 
             ref={controlsRef}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed top-0 left-0 right-0 z-50 bg-brand-light/90 backdrop-blur-md border-b border-brand-dark/10 shadow-sm"
+            className="fixed top-0 left-0 right-0 z-[100] bg-white/85 backdrop-blur-xl border-b border-slate-200/60 shadow-sm"
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col md:flex-row justify-between items-center py-4 gap-4">
-                
-                {/* Niche Selector */}
-                <div className="flex items-center gap-2 bg-white p-1 rounded-full overflow-x-auto w-full md:w-auto border border-brand-dark/10">
-                  {(Object.entries(niches) as [Niche, typeof niches[Niche]][]).map(([key, value]) => {
-                    const Icon = value.icon;
-                    return (
-                      <button
-                        key={key}
-                        onClick={() => setNiche(key)}
-                        className={cn(
-                          "flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap",
-                          niche === key 
-                            ? "bg-brand-dark text-brand-yellow" 
-                            : "text-brand-dark/60 hover:text-brand-dark hover:bg-brand-dark/5"
-                        )}
-                      >
-                        <Icon size={16} />
-                        {value.name}
-                      </button>
-                    );
-                  })}
-                </div>
+            <div className="max-w-[1920px] mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              
+              {/* Left: Niche Selector */}
+              <div className="flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/60">
+                {(Object.entries(niches) as [Niche, typeof niches[Niche]][]).map(([key, value]) => {
+                  const Icon = value.icon;
+                  const isActive = niche === key;
+                  return (
+                    <button
+                      key={key}
+                      onClick={() => setNiche(key)}
+                      className={cn(
+                        "flex items-center gap-2 px-3 sm:px-5 py-1.5 sm:py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap",
+                        isActive 
+                          ? "bg-white text-brand-dark shadow-sm ring-1 ring-slate-200/50" 
+                          : "text-slate-500 hover:text-brand-dark hover:bg-slate-200/50"
+                      )}
+                    >
+                      <Icon size={16} className={isActive ? "text-brand-yellow" : "text-slate-400"} />
+                      <span className="hidden sm:inline">{value.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
 
-                {/* Mode Selector */}
-                <div className="flex items-center gap-2 bg-white p-1 rounded-full w-full md:w-auto border border-brand-dark/10">
+              {/* Right: Mode Selector */}
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/60">
                   <button
                     onClick={() => setMode('hero')}
                     className={cn(
-                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all",
-                      mode === 'hero' ? "bg-brand-dark text-brand-yellow" : "text-brand-dark/60 hover:text-brand-dark"
+                      "flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap",
+                      mode === 'hero' ? "bg-white text-brand-dark shadow-sm ring-1 ring-slate-200/50" : "text-slate-500 hover:text-brand-dark hover:bg-slate-200/50"
                     )}
                   >
-                    <BookOpen size={16} />
-                    <span className="hidden sm:inline">Guia do Herói</span>
+                    <BookOpen size={16} className={mode === 'hero' ? "text-brand-yellow" : "text-slate-400"} />
+                    <span className="hidden lg:inline">Guia do Herói</span>
                   </button>
                   <button
                     onClick={() => setMode('xray')}
                     className={cn(
-                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all",
-                      mode === 'xray' ? "bg-brand-dark text-brand-yellow" : "text-brand-dark/60 hover:text-brand-dark"
+                      "flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap",
+                      mode === 'xray' ? "bg-white text-brand-dark shadow-sm ring-1 ring-slate-200/50" : "text-slate-500 hover:text-brand-dark hover:bg-slate-200/50"
                     )}
                   >
-                    <Settings size={16} />
-                    <span className="hidden sm:inline">Raio-X</span>
+                    <Settings size={16} className={mode === 'xray' ? "text-brand-yellow" : "text-slate-400"} />
+                    <span className="hidden lg:inline">Raio-X</span>
                   </button>
                   <button
                     onClick={() => setMode('roi')}
                     className={cn(
-                      "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all",
-                      mode === 'roi' ? "bg-brand-dark text-brand-yellow" : "text-brand-dark/60 hover:text-brand-dark"
+                      "flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap",
+                      mode === 'roi' ? "bg-white text-brand-dark shadow-sm ring-1 ring-slate-200/50" : "text-slate-500 hover:text-brand-dark hover:bg-slate-200/50"
                     )}
                   >
-                    <Calculator size={16} />
-                    <span className="hidden sm:inline">ROI</span>
-                  </button>
-                  <div className="w-px h-6 bg-brand-dark/10 mx-1 hidden md:block"></div>
-                  <button
-                    onClick={() => setMode('end-client')}
-                    className="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-brand-yellow text-brand-dark hover:bg-[#d8d287] transition-all"
-                  >
-                    <Eye size={16} />
-                    <span className="hidden sm:inline">Visão Cliente</span>
+                    <Calculator size={16} className={mode === 'roi' ? "text-brand-yellow" : "text-slate-400"} />
+                    <span className="hidden lg:inline">ROI</span>
                   </button>
                 </div>
 
+                <div className="w-px h-8 bg-slate-200 hidden sm:block"></div>
+
+                <button
+                  onClick={() => setMode('end-client')}
+                  className="flex items-center gap-2 px-4 sm:px-6 py-1.5 sm:py-2 rounded-xl text-sm font-bold bg-brand-dark text-brand-yellow hover:bg-brand-dark/90 transition-all whitespace-nowrap shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  <Eye size={16} />
+                  <span className="hidden sm:inline">Visão Cliente</span>
+                </button>
               </div>
+
             </div>
           </motion.div>
         )}
@@ -456,7 +456,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={() => setMode('hero')}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-brand-dark text-brand-yellow px-6 py-3 rounded-full shadow-2xl hover:bg-[#1a1a14] transition-all hover:scale-105"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-brand-dark/95 backdrop-blur-xl border border-white/10 text-white px-6 py-3 rounded-full shadow-2xl hover:bg-brand-dark hover:border-brand-yellow hover:text-brand-yellow transition-all hover:scale-105 font-medium"
           >
             <Settings size={18} />
             Sair da Visão do Cliente
@@ -465,7 +465,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Main Content Area */}
-      <main className={cn("transition-all duration-500", !isEndClient ? "pt-24" : "")}>
+      <main className={cn("transition-all duration-500", !isEndClient ? "pt-20" : "")}>
         {niche === 'professional' && (
           <ProfessionalLayout 
             nicheId={niche} currentNiche={currentNiche} mode={mode} 
