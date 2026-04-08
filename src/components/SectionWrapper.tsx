@@ -1,8 +1,9 @@
 import React from 'react';
 import { cn } from '../lib/utils';
 import { useAppContext } from '../context/AppContext';
+import { xrayData } from '../data/xrayData';
 
-export const SectionWrapper = ({ children, id, htmlId, className }: { children: React.ReactNode, id: string, htmlId?: string, className?: string }) => {
+export const SectionWrapper = ({ children, id, htmlId, className }: { children: React.ReactNode, id: keyof typeof xrayData | 'none', htmlId?: string, className?: string }) => {
   const { mode } = useAppContext();
   
   return (

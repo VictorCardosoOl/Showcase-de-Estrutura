@@ -1,7 +1,6 @@
 import { Briefcase, Utensils, Store, Building2 } from 'lucide-react';
-import { NicheData, NicheId } from '../types';
 
-export const niches: Record<NicheId, NicheData> = {
+export const niches = {
   professional: {
     name: 'Profissional',
     icon: Briefcase,

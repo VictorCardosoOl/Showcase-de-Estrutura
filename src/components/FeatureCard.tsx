@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 export const FeatureCard = ({ feature, index }: { feature: any, index: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
